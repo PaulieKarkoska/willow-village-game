@@ -31,6 +31,12 @@ public static class Preferences
     {
         PlayerPrefs.SetFloat(SFX_VOL_KEY, volume);
     }
+
+
+    public static void Save()
+    {
+        PlayerPrefs.Save();
+    }
 }
 
 

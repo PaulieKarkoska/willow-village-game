@@ -60,13 +60,17 @@ public class MainMenuController : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("settings pressed");
+        TogglePanel(settingsPanel, true);
 
+    }
+    public void SettingsClose()
+    {
+        TogglePanel(settingsPanel, false);
     }
 
     public void Exit()
     {
-        Debug.Log("exit pressed");
+        Application.Quit();
 
     }
 
