@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2631252910301484093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980953444417380391}
+  - component: {fileID: 513751652321149122}
+  - component: {fileID: 1640082715186835693}
+  m_Layer: 2
+  m_Name: hitBox
+  m_TagString: Ignore Ragdoll
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1980953444417380391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631252910301484093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.19999997}
+  m_Children: []
+  m_Father: {fileID: 7949077616257899167}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &513751652321149122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631252910301484093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb97f58541b05b24ab37661346298ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 0
+  selectedToolbar: 0
+  attackObject: {fileID: 0}
+  trigger: {fileID: 0}
+  damagePercentage: 100
+  triggerType: 3
+--- !u!65 &1640082715186835693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631252910301484093}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5399495405054382092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7949077616257899167}
+  - component: {fileID: 2558076093013365104}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1254,9 +1319,57 @@ Transform:
   - {fileID: 7948552185898488479}
   - {fileID: 7948875855109476107}
   - {fileID: 7949057547640650843}
+  - {fileID: 1980953444417380391}
   m_Father: {fileID: 7949335089935419883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2558076093013365104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951516346254667739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0befb9e9384ab34d9dfc9d3cabf04b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 0
+  selectedToolbar: 0
+  damage:
+    damageValue: 15
+    staminaBlockCost: 5
+    staminaRecoveryDelay: 1
+    ignoreDefense: 0
+    activeRagdoll: 0
+    senselessTime: 0
+    sender: {fileID: 0}
+    receiver: {fileID: 0}
+    hitPosition: {x: 0, y: 0, z: 0}
+    hitReaction: 1
+    recoil_id: 0
+    reaction_id: 0
+    damageType: 
+  overrideDamageSender: {fileID: 0}
+  hitBoxes:
+  - {fileID: 513751652321149122}
+  damageModifier: 0
+  canApplyDamage: 0
+  onDamageHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecoilHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  meleeManager: {fileID: 0}
 --- !u!1 &7951520810703005771
 GameObject:
   m_ObjectHideFlags: 0
@@ -4766,8 +4879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
-  selectedToolbar: 0
+  openCloseWindow: 1
+  selectedToolbar: 1
   _isDead: 0
   _currentHealth: 0
   isImmortal: 0
@@ -4843,15 +4956,15 @@ MonoBehaviour:
   stopMoveHeight: 0.65
   stopMoveDistance: 0.1
   useRootMotion: 0
-  locomotionType: 0
+  locomotionType: 1
   disableAnimations: 0
   useLeanMovement: 1
   freeSpeed:
     movementSmooth: 6
     animationSmooth: 0.2
-    rotationSpeed: 20
+    rotationSpeed: 500
     walkByDefault: 0
-    rotateWithCamera: 0
+    rotateWithCamera: 1
     walkSpeed: 2
     runningSpeed: 4
     sprintSpeed: 6
@@ -4859,15 +4972,15 @@ MonoBehaviour:
   strafeSpeed:
     movementSmooth: 6
     animationSmooth: 0.2
-    rotationSpeed: 20
+    rotationSpeed: 500
     walkByDefault: 0
-    rotateWithCamera: 0
+    rotateWithCamera: 1
     walkSpeed: 2
     runningSpeed: 4
     sprintSpeed: 6
     crouchSpeed: 2
   rotateByWorld: 0
-  turnOnSpotAnim: 0
+  turnOnSpotAnim: 1
   randomIdleTime: 0
   useContinuousSprint: 1
   sprintOnlyFree: 1
@@ -5217,6 +5330,10 @@ MonoBehaviour:
     bodyPart: RightLowerLeg
     attackObject: {fileID: 1778576261778246450}
     isHuman: 1
+  - transform: {fileID: 7949077616257899167}
+    bodyPart: Head
+    attackObject: {fileID: 2558076093013365104}
+    isHuman: 0
   defaultDamage:
     damageValue: 10
     staminaBlockCost: 5
