@@ -3,12 +3,9 @@ namespace Invector.vItemManager {
      public enum vItemType {
        [Description("")] Consumable=0,
        [Description("Melee")] MeleeWeapon=1,
-       [Description("Shooter")] ShooterWeapon=2,
-       [Description("(VALUE)")] Ammo=3,
-       [Description("")] Archery=4,
-       [Description("")] Builder=5,
-       [Description("")] CraftingMaterials=6,
-       [Description("")] Defense=7
+       [Description("")] Money=2,
+       [Description("")] Builder=3,
+       [Description("")] Defense=4
      }
      public enum vItemAttributes {
        [Description("")] Health=0,
@@ -17,10 +14,7 @@ namespace Invector.vItemManager {
        [Description("")] StaminaCost=3,
        [Description("")] DefenseRate=4,
        [Description("")] DefenseRange=5,
-       [Description("(VALUE)")] AmmoCount=6,
-       [Description("")] MaxHealth=7,
-       [Description("")] MaxStamina=8,
-       [Description("(VALUE)")] SecundaryAmmoCount=9,
-       [Description("")] SecundaryDamage=10
+       [Description("")] MaxHealth=6,
+       [Description("")] MaxStamina=7
      }
 }

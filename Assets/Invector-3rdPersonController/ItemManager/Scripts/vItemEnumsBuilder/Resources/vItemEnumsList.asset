@@ -15,12 +15,14 @@ MonoBehaviour:
   itemTypeEnumValues:
   - Consumable
   - Builder
+  - Money
   itemAttributesEnumValues:
   - Health
   - MaxHealth
   - MaxStamina
   - Stamina
   itemTypeEnumFormats:
+  - 
   - 
   - 
   itemAttributesEnumFormats:

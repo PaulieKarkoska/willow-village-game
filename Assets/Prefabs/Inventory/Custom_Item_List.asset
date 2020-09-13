@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6467851451105932516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  id: 1
+  description: 
+  type: 7
+  icon: {fileID: 0}
+  stackable: 0
+  maxStack: 1
+  amount: 0
+  originalObject: {fileID: 2505576836162854789, guid: 86d88d52153b39b49b66c09f7c0dbe6b,
+    type: 3}
+  dropObject: {fileID: 5706044829104311969, guid: 6f83092696c1041448135d288010d0cf,
+    type: 3}
+  attributes: []
+  isInEquipArea: 0
+  destroyAfterUse: 0
+  canBeUsed: 0
+  canBeDroped: 1
+  canBeDestroyed: 0
+  EnableAnim: HighBack
+  DisableAnim: HighBack
+  enableDelayTime: 0.5
+  disableDelayTime: 0.5
+  customHandler: 
+  twoHandWeapon: 0
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-5599717347932531808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
+  m_Name: Mace
+  m_EditorClassIdentifier: 
+  id: 2
+  description: 
+  type: 1
+  icon: {fileID: 0}
+  stackable: 0
+  maxStack: 1
+  amount: 0
+  originalObject: {fileID: 3496074088439096532, guid: ff13d8f3158f4234d8f017bd29f0b970,
+    type: 3}
+  dropObject: {fileID: 1059729714568511318, guid: bf3e01f35794c4f77845c1518c4d400c,
+    type: 3}
+  attributes: []
+  isInEquipArea: 0
+  destroyAfterUse: 0
+  canBeUsed: 0
+  canBeDroped: 1
+  canBeDestroyed: 0
+  EnableAnim: LowFront
+  DisableAnim: LowFront
+  enableDelayTime: 0.5
+  disableDelayTime: 0.5
+  customHandler: 
+  twoHandWeapon: 0
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-2269931112521527191
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
+  m_Name: Old Sword
+  m_EditorClassIdentifier: 
+  id: 0
+  description: 
+  type: 1
+  icon: {fileID: 0}
+  stackable: 0
+  maxStack: 1
+  amount: 0
+  originalObject: {fileID: 4259989685587095211, guid: 08272af930e29524c86673f06c1f8f3c,
+    type: 3}
+  dropObject: {fileID: 1059729714568511318, guid: 73e356e52882c437a9f9776c19d1d0f0,
+    type: 3}
+  attributes: []
+  isInEquipArea: 0
+  destroyAfterUse: 0
+  canBeUsed: 0
+  canBeDroped: 1
+  canBeDestroyed: 0
+  EnableAnim: LowFront
+  DisableAnim: LowFront
+  enableDelayTime: 0.5
+  disableDelayTime: 0.5
+  customHandler: 
+  twoHandWeapon: 1
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3602cfd0ac79644a19fea8f4fd1b49, type: 3}
+  m_Name: Custom_Item_List
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: -2269931112521527191}
+  - {fileID: -6467851451105932516}
+  - {fileID: -5599717347932531808}
+  - {fileID: 5646197877319330659}
+  inEdition: 1
+  itemsHidden: 1
+--- !u!114 &5646197877319330659
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
+  m_Name: Standard Sword
+  m_EditorClassIdentifier: 
+  id: 3
+  description: 
+  type: 1
+  icon: {fileID: 0}
+  stackable: 0
+  maxStack: 1
+  amount: 0
+  originalObject: {fileID: 3959933781171688413, guid: 9ff4251bb4c6f4551bd19806ac2c6e55,
+    type: 3}
+  dropObject: {fileID: 6942563148597917083, guid: 8005bf3042e8845238e981548146795c,
+    type: 3}
+  attributes: []
+  isInEquipArea: 0
+  destroyAfterUse: 0
+  canBeUsed: 0
+  canBeDroped: 1
+  canBeDestroyed: 0
+  EnableAnim: LowFront
+  DisableAnim: LowFront
+  enableDelayTime: 0.5
+  disableDelayTime: 0.5
+  customHandler: 
+  twoHandWeapon: 0
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
