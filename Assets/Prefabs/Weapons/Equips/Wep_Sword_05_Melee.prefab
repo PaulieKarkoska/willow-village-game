@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5413701612128344134}
   - component: {fileID: 2972178355840382349}
   - component: {fileID: 7842035491644151712}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wep_Sword_05_Melee
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4259989685587095211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.49999973, y: 0.49999985, z: 0.5000003, w: 0.50000024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2611768877235667171}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!114 &2972178355840382349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebe2ea9c9ea0544d84d9c27f7470915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 0
+  openCloseEvents: 1
   openCloseWindow: 0
   selectedToolbar: 0
   damage:
@@ -64,7 +64,7 @@ MonoBehaviour:
     damageType: 
   overrideDamageSender: {fileID: 0}
   hitBoxes:
-  - {fileID: 8613141368380400621}
+  - {fileID: 0}
   damageModifier: 0
   canApplyDamage: 0
   onDamageHit:
@@ -84,14 +84,14 @@ MonoBehaviour:
   useStrongAttack: 0
   distanceToAttack: 1
   attackID: 1
-  movesetID: 1
-  staminaCost: 0
-  staminaRecoveryDelay: 0
-  defenseRate: 100
+  movesetID: 0
+  staminaCost: 15
+  staminaRecoveryDelay: 0.5
+  defenseRate: 60
   defenseRange: 90
-  defenseID: 0
+  defenseID: 1
   recoilID: 0
-  breakAttack: 0
+  breakAttack: 1
   onDefense:
     m_PersistentCalls:
       m_Calls: []
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b02b25f3302cf04fb8e4a1a80f0b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 0
+  openCloseEvents: 1
   openCloseWindow: 0
   selectedToolbar: 0
   onEquip:
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2611768877235667171}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Components
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -227,6 +227,10 @@ PrefabInstance:
     - target: {fileID: 1737805685605432, guid: 02b50c2f99aa6f64b90172cff30899e9, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737805685605432, guid: 02b50c2f99aa6f64b90172cff30899e9, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4270380075018246, guid: 02b50c2f99aa6f64b90172cff30899e9, type: 3}
       propertyPath: m_LocalPosition.x

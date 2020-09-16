@@ -27,15 +27,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942563148597917083}
-  m_LocalRotation: {x: 0.053635135, y: 0.70905846, z: 0.0034423757, w: 0.70309854}
-  m_LocalPosition: {x: 16.215782, y: 0.091513395, z: 1.8013158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 990632692392194932}
   - {fileID: 6943281685515809701}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 4.045, y: 90.648, z: 4.652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7047710720760454623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 0
-  selectedToolbar: 0
+  selectedToolbar: 3
   inputType: 0
   actionInput:
     useInput: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   destroyDelay: 0
   customCameraState: Default
   playAnimation: 
-  endExitTimeAnimation: 0.8
+  endExitTimeAnimation: 0
   animatorActionState: 0
   resetAnimatorActionState: 1
   useAnimatorMatchTarget: 1
@@ -250,7 +250,7 @@ MonoBehaviour:
         m_CallState: 2
   itemListData: {fileID: 11400000, guid: f8ca69f8790594081ac1417d6360298d, type: 2}
   onCollectDelay: 0
-  textDelay: 0.25
+  textDelay: 0
   ignoreItemAnimation: 0
   itemsFilter: 01000000
   items:
@@ -259,8 +259,8 @@ MonoBehaviour:
     amount: 1
     attributes: []
     changeAttributes: 0
-    autoEquip: 0
-    addToEquipArea: 0
+    autoEquip: 1
+    addToEquipArea: 1
     indexArea: 0
 --- !u!114 &6943281685527912309
 MonoBehaviour:

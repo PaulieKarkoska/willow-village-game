@@ -610,7 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 0
-  selectedToolbar: 0
+  selectedToolbar: 3
   inputType: 0
   actionInput:
     useInput: 1
@@ -642,7 +642,7 @@ MonoBehaviour:
   destroyDelay: 0
   customCameraState: Default
   playAnimation: 
-  endExitTimeAnimation: 0.8
+  endExitTimeAnimation: 0
   animatorActionState: 0
   resetAnimatorActionState: 1
   useAnimatorMatchTarget: 1
@@ -810,7 +810,7 @@ MonoBehaviour:
         m_CallState: 2
   itemListData: {fileID: 11400000, guid: f8ca69f8790594081ac1417d6360298d, type: 2}
   onCollectDelay: 0
-  textDelay: 0.25
+  textDelay: 0
   ignoreItemAnimation: 0
   itemsFilter: 01000000
   items:
@@ -819,9 +819,9 @@ MonoBehaviour:
     amount: 1
     attributes: []
     changeAttributes: 0
-    autoEquip: 0
-    addToEquipArea: 0
-    indexArea: 0
+    autoEquip: 1
+    addToEquipArea: 1
+    indexArea: 1
 --- !u!114 &5705071218157102159
 MonoBehaviour:
   m_ObjectHideFlags: 0

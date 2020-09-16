@@ -87,13 +87,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4783652321947653023}
-  m_LocalRotation: {x: -1, y: 0.000000037563847, z: 0.000000029802319, w: 0.00000011793907}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_LocalRotation: {x: -0.5973441, y: 0.3932725, z: -0.56463945, w: 0.41194546}
+  m_LocalPosition: {x: 0.1161, y: 0.052, z: 0.0134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7948959135268529771}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -177.247, y: -88.68201, z: 69.41}
 --- !u!1 &5180051949880918624
 GameObject:
   m_ObjectHideFlags: 0
@@ -5980,8 +5980,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7948875674602248215}
     m_Modifications:
+    - target: {fileID: 1402523938, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
+      propertyPath: startWithAlphaFull
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402523938, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
+      propertyPath: openCloseWindow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1402523939, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
       propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402523939, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402523939, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612610259185782925, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: equipSlots.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1232222697194668045, guid: 798ff87eff5874f22b22665f33f478f9,
@@ -6043,6 +6064,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.000153
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017813415953650, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: selectedToolbar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017814001556866, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: equipSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017814001556866, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: openCloseEvents
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017815434406728, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: equipSlots.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444320678111530354, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}

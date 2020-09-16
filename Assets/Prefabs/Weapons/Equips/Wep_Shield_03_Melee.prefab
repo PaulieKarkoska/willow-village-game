@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6821578069842736768}
   - component: {fileID: 3647742566805819496}
   - component: {fileID: 5117613502605069993}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wep_Shield_03_Melee
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2505576836162854789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000040126044, y: -0.7071066, z: -0.707107, w: -0.000039315073}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6090077175300185348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -180, z: -0.0059814453}
 --- !u!114 &3647742566805819496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   staminaRecoveryDelay: 0
   defenseRate: 100
   defenseRange: 90
-  defenseID: 2
+  defenseID: 1
   recoilID: 0
   breakAttack: 0
   onDefense:
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b02b25f3302cf04fb8e4a1a80f0b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 0
+  openCloseEvents: 1
   openCloseWindow: 0
   selectedToolbar: 0
   onEquip:
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6090077175300185348}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Components
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ BoxCollider:
   m_GameObject: {fileID: 9199726402934408879}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.5847217, y: 1.0809493, z: 0.10801741}
   m_Center: {x: 2.820535e-17, y: -0.15456057, z: 0.029265217}
@@ -223,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 1691778326813534, guid: 56359a0b63e0cfa4787dc3ce3cd41229, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Shield_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691778326813534, guid: 56359a0b63e0cfa4787dc3ce3cd41229, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4612383885901948, guid: 56359a0b63e0cfa4787dc3ce3cd41229, type: 3}
       propertyPath: m_LocalPosition.x

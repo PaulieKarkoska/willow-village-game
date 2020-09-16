@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   description: 
-  type: 7
+  type: 4
   icon: {fileID: 0}
   stackable: 0
   maxStack: 1
@@ -29,10 +29,10 @@ MonoBehaviour:
   canBeUsed: 0
   canBeDroped: 1
   canBeDestroyed: 0
-  EnableAnim: HighBack
-  DisableAnim: HighBack
-  enableDelayTime: 0.5
-  disableDelayTime: 0.5
+  EnableAnim: 
+  DisableAnim: 
+  enableDelayTime: 0
+  disableDelayTime: 0
   customHandler: 
   twoHandWeapon: 0
   onDestroy:
@@ -67,10 +67,10 @@ MonoBehaviour:
   canBeUsed: 0
   canBeDroped: 1
   canBeDestroyed: 0
-  EnableAnim: LowFront
-  DisableAnim: LowFront
-  enableDelayTime: 0.5
-  disableDelayTime: 0.5
+  EnableAnim: 
+  DisableAnim: 
+  enableDelayTime: 0
+  disableDelayTime: 0
   customHandler: 
   twoHandWeapon: 0
   onDestroy:
@@ -105,12 +105,12 @@ MonoBehaviour:
   canBeUsed: 0
   canBeDroped: 1
   canBeDestroyed: 0
-  EnableAnim: LowFront
-  DisableAnim: LowFront
-  enableDelayTime: 0.5
-  disableDelayTime: 0.5
+  EnableAnim: 
+  DisableAnim: 
+  enableDelayTime: 0
+  disableDelayTime: 0
   customHandler: 
-  twoHandWeapon: 1
+  twoHandWeapon: 0
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: -6467851451105932516}
   - {fileID: -5599717347932531808}
   - {fileID: 5646197877319330659}
-  inEdition: 1
+  inEdition: 0
   itemsHidden: 1
 --- !u!114 &5646197877319330659
 MonoBehaviour:
@@ -162,10 +162,10 @@ MonoBehaviour:
   canBeUsed: 0
   canBeDroped: 1
   canBeDestroyed: 0
-  EnableAnim: LowFront
-  DisableAnim: LowFront
-  enableDelayTime: 0.5
-  disableDelayTime: 0.5
+  EnableAnim: 
+  DisableAnim: 
+  enableDelayTime: 0
+  disableDelayTime: 0
   customHandler: 
   twoHandWeapon: 0
   onDestroy:

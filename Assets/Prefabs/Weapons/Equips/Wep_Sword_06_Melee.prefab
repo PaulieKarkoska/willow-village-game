@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3952206575046678794}
   - component: {fileID: 3093680509424801971}
   - component: {fileID: -8691315421244979290}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wep_Sword_06_Melee
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959933781171688413}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.49999973, y: 0.49999985, z: 0.5000003, w: 0.50000024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2962118040349482553}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!114 &3093680509424801971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     damageType: 
   overrideDamageSender: {fileID: 0}
   hitBoxes:
-  - {fileID: 8018509999903260514}
+  - {fileID: 0}
   damageModifier: 0
   canApplyDamage: 0
   onDamageHit:
@@ -83,15 +83,15 @@ MonoBehaviour:
   meleeType: 2
   useStrongAttack: 0
   distanceToAttack: 1
-  attackID: 0
+  attackID: 1
   movesetID: 0
-  staminaCost: 0
-  staminaRecoveryDelay: 0
-  defenseRate: 100
+  staminaCost: 15
+  staminaRecoveryDelay: 0.5
+  defenseRate: 60
   defenseRange: 90
-  defenseID: 0
+  defenseID: 1
   recoilID: 0
-  breakAttack: 0
+  breakAttack: 1
   onDefense:
     m_PersistentCalls:
       m_Calls: []
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b02b25f3302cf04fb8e4a1a80f0b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 0
+  openCloseEvents: 1
   openCloseWindow: 0
   selectedToolbar: 0
   onEquip:
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2962118040349482553}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Components
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -192,8 +192,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05615913, y: 1.1912111, z: 0.053490177}
-  m_Center: {x: 0, y: 0.74997324, z: 0}
+  m_Size: {x: 0.023612568, y: 1.1912111, z: 0.053490177}
+  m_Center: {x: 0.000000016457744, y: 0.74997324, z: 9.099692e-10}
 --- !u!114 &8018509999903260514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +227,10 @@ PrefabInstance:
     - target: {fileID: 1781666116710412, guid: ea2dbfa1557b6db49960715184f8470e, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781666116710412, guid: ea2dbfa1557b6db49960715184f8470e, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4507134049907856, guid: ea2dbfa1557b6db49960715184f8470e, type: 3}
       propertyPath: m_LocalPosition.x
