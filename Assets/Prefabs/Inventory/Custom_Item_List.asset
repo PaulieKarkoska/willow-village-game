@@ -28,7 +28,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   canBeUsed: 0
   canBeDroped: 1
-  canBeDestroyed: 0
+  canBeDestroyed: 1
   EnableAnim: 
   DisableAnim: 
   enableDelayTime: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   canBeUsed: 0
   canBeDroped: 1
-  canBeDestroyed: 0
+  canBeDestroyed: 1
   EnableAnim: 
   DisableAnim: 
   enableDelayTime: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   canBeUsed: 0
   canBeDroped: 1
-  canBeDestroyed: 0
+  canBeDestroyed: 1
   EnableAnim: 
   DisableAnim: 
   enableDelayTime: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: -6467851451105932516}
   - {fileID: -5599717347932531808}
   - {fileID: 5646197877319330659}
-  inEdition: 0
+  inEdition: 1
   itemsHidden: 1
 --- !u!114 &5646197877319330659
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   destroyAfterUse: 0
   canBeUsed: 0
   canBeDroped: 1
-  canBeDestroyed: 0
+  canBeDestroyed: 1
   EnableAnim: 
   DisableAnim: 
   enableDelayTime: 0

@@ -5099,7 +5099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   unlockCursorOnStart: 0
   showCursorOnStart: 0
@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 1
+  openCloseWindow: 0
   selectedToolbar: 0
   Members:
   - transform: {fileID: 7948566503083205127}
@@ -5625,8 +5625,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1864421765}
         m_TargetAssemblyTypeName: EquipmentHelper, Assembly-CSharp
-        m_MethodName: AddItem
-        m_Mode: 0
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5643,19 +5643,7 @@ MonoBehaviour:
       m_Calls: []
   onDropItem:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1864421765}
-        m_TargetAssemblyTypeName: EquipmentHelper, Assembly-CSharp
-        m_MethodName: DropItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onOpenCloseInventory:
     m_PersistentCalls:
       m_Calls:
@@ -5690,13 +5678,37 @@ MonoBehaviour:
       m_Calls: []
   onUnequipItem:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1864421765}
+        m_TargetAssemblyTypeName: EquipmentHelper, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFinishEquipItem:
     m_PersistentCalls:
       m_Calls: []
   onFinishUnequipItem:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1864421765}
+        m_TargetAssemblyTypeName: EquipmentHelper, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSaveItems:
     m_PersistentCalls:
       m_Calls: []
@@ -6005,6 +6017,16 @@ PrefabInstance:
       propertyPath: equipSlots.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 612610259185782925, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: openCloseEvents
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 612610259185782925, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: setEquipSlotWhenSubmit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1232222697194668045, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6063,9 +6085,14 @@ PrefabInstance:
     - target: {fileID: 3230466574713676040, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.000153
+      value: -15.000061
       objectReference: {fileID: 0}
     - target: {fileID: 3340017813415953650, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: selectedToolbar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017813531988644, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: selectedToolbar
       value: 2
@@ -6083,6 +6110,11 @@ PrefabInstance:
     - target: {fileID: 3340017815434406728, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: equipSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340017815434406728, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: setEquipSlotWhenSubmit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444320678111530354, guid: 798ff87eff5874f22b22665f33f478f9,
@@ -6159,6 +6191,16 @@ PrefabInstance:
         type: 3}
       propertyPath: onUnequipItem.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8005635675256607767, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: selectedToolbar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019618877654831238, guid: 798ff87eff5874f22b22665f33f478f9,
+        type: 3}
+      propertyPath: m_Name
+      value: EquipSlot (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}

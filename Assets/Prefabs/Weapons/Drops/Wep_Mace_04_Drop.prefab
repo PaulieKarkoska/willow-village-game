@@ -251,7 +251,7 @@ MonoBehaviour:
   itemListData: {fileID: 11400000, guid: f8ca69f8790594081ac1417d6360298d, type: 2}
   onCollectDelay: 0
   textDelay: 0
-  ignoreItemAnimation: 0
+  ignoreItemAnimation: 1
   itemsFilter: 01000000
   items:
   - id: 2
