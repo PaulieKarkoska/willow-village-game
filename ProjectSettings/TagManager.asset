@@ -30,6 +30,7 @@ TagManager:
   - CoverPoint
   - Interactable
   - AIAction
+  - GameUI
   layers:
   - Default
   - TransparentFX

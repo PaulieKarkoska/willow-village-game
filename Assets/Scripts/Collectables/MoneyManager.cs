@@ -1,18 +1,45 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    public int totalMoney;
+    [Header("UI")]
+    [SerializeField]
+    private UIManager uiManager;
 
-    public int AddMoney(int money)
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip[] moneyAudioClips;
+
+    private int _totalMoney = 0;
+    public int totalMoney
     {
-        totalMoney += money;
+        get
+        {
+            return _totalMoney;
+        }
+        private set
+        {
+            _totalMoney = value;
+            PlaySound();
+            uiManager.UpdateGoldCountText(value);
+        }
+    }
+
+    private void Start()
+    {
+        uiManager = GameObject.FindGameObjectWithTag("GameUI").GetComponent<UIManager>();
+    }
+
+    public int AddMoney(int moneyToAdd)
+    {
+        totalMoney += moneyToAdd;
         return totalMoney;
     }
 
-    public int TakeMoney(int money)
+    public int RemoveMoney(int moneyToRemove)
     {
-        totalMoney -= money;
+        totalMoney -= moneyToRemove;
         return totalMoney;
     }
 
@@ -20,5 +47,13 @@ public class MoneyManager : MonoBehaviour
     {
         return cost <= totalMoney;
     }
+
+    #region Audio
+    private void PlaySound()
+    {
+        if (moneyAudioClips.Length > 0)
+            AudioSource.PlayClipAtPoint( moneyAudioClips[UnityEngine.Random.Range(0, moneyAudioClips.Length - 1)], transform.position);
+    }
+    #endregion
 
 }

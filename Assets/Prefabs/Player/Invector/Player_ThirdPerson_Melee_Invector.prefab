@@ -5731,7 +5731,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7456d9b65ea5d409d9c3ea4f635254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalMoney: 0
+  uiManager: {fileID: 0}
+  moneyAudioClips:
+  - {fileID: 8300000, guid: 6bdca3106c30d374bac636140ff4e97d, type: 3}
+  - {fileID: 8300000, guid: 0d6dd698c088c57439bcb7e0fca7548b, type: 3}
+  - {fileID: 8300000, guid: daf1ca5bdea919449a790e5c0cb0aa1e, type: 3}
+  - {fileID: 8300000, guid: b9922f1d854dfa54da4e271ab49c4981, type: 3}
+  - {fileID: 8300000, guid: 11a7f30797996ce4091b37cf06a554e9, type: 3}
 --- !u!1 &7952459024062940155
 GameObject:
   m_ObjectHideFlags: 0
@@ -6087,7 +6093,7 @@ PrefabInstance:
     - target: {fileID: 3230466574713676040, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.000061
+      value: -15.000122
       objectReference: {fileID: 0}
     - target: {fileID: 3340017813415953650, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}

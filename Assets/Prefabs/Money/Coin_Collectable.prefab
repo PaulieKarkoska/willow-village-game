@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 5022928546541471653}
   - component: {fileID: 7104603005003934388}
   - component: {fileID: 3990063428594322319}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Coin_Collectable
   m_TagString: Collectable
   m_Icon: {fileID: 0}
@@ -234,5 +234,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.85
   m_Center: {x: 0, y: 0, z: 0}
