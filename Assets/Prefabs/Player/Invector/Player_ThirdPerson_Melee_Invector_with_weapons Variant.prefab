@@ -43,6 +43,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: defaultEquip_R
       objectReference: {fileID: 0}
+    - target: {fileID: 5864736387843916650, guid: 5a4b7e524326dac4d88f134a898bb48d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864736387843916650, guid: 5a4b7e524326dac4d88f134a898bb48d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7948875674602248215, guid: 5a4b7e524326dac4d88f134a898bb48d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_ThirdPerson_Melee_Invector_with_weapons Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443458314845661551, guid: 5a4b7e524326dac4d88f134a898bb48d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a4b7e524326dac4d88f134a898bb48d, type: 3}

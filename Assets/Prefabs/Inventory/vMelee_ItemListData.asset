@@ -26,7 +26,7 @@ MonoBehaviour:
   - {fileID: 11411124}
   - {fileID: 11437076}
   - {fileID: 11411708}
-  inEdition: 1
+  inEdition: 0
   itemsHidden: 0
 --- !u!114 &11411124
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
     Recoil: Hard
 
     Bonus: Break Attack '
-  type: 7
+  type: 4
   icon: {fileID: 21300000, guid: 4a46b7c6ff6f17a4a95bfb58b3397585, type: 3}
   stackable: 0
   maxStack: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
   description: 'Melee Shield
 
     Recoil: Low'
-  type: 7
+  type: 4
   icon: {fileID: 21300000, guid: 40e348f6451ddf7438089a59a033e57f, type: 3}
   stackable: 0
   maxStack: 1

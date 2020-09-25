@@ -51,13 +51,19 @@ namespace Invector.vMelee
         public virtual void SetActiveDamage(bool value)
         {
             canApplyDamage = value;
-            for (int i = 0; i < hitBoxes.Count; i++)
+            foreach(var hitbox in hitBoxes)
             {
-                var hitCollider = hitBoxes[i];
-                hitCollider.trigger.enabled = value;
+                hitbox.trigger.enabled = value;
                 if (value == false && targetColliders != null)
-                    targetColliders[hitCollider].Clear();
+                    targetColliders[hitbox].Clear();
             }
+            //for (int i = 0; i < hitBoxes.Count; i++)
+            //{
+            //    var hitCollider = hitBoxes[i];
+            //    hitCollider.trigger.enabled = value;
+            //    if (value == false && targetColliders != null)
+            //        targetColliders[hitCollider].Clear();
+            //}
             if (value)
                 onEnableDamage.Invoke();
             else onDisableDamage.Invoke();

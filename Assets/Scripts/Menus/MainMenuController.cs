@@ -11,13 +11,13 @@ public class MainMenuController : MonoBehaviour
 
     [Header("Menu Buttons")]
     public Button NewGameButton;
-    public Button ContinueButton;
+    //public Button ContinueButton;
     public Button SettingsButton;
     public Button ExitButton;
 
-    [Header("New Game Buttons")]
-    public Button NewGame_YesButton;
-    public Button NewGame_NoButton;
+    //[Header("New Game Buttons")]
+    //public Button NewGame_YesButton;
+    //public Button NewGame_NoButton;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class MainMenuController : MonoBehaviour
     public void NewGame()
     {
         //if (SavaManager.HasSave)
-        if (true)
+        if (false)
         {
             TogglePanel(newGamePanel, true);
         }
@@ -78,7 +78,7 @@ public class MainMenuController : MonoBehaviour
     {
         panel.SetActive(active);
         NewGameButton.interactable = !active;
-        ContinueButton.interactable = !active;
+        //ContinueButton.interactable = !active;
         SettingsButton.interactable = !active;
         ExitButton.interactable = !active;
     }

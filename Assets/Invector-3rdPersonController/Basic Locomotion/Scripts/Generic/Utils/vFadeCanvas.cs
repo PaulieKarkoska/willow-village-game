@@ -50,12 +50,14 @@ namespace Invector.Utils
 
         public void AlphaFull()
         {
-            if (group) group.alpha = 1f;
+            //if (group) group.alpha = 1f;
+            if (group) group.alpha = 0f;
         }
 
         public void FadeIn()
         {
-            StartCoroutine(Fade(1f));
+            //StartCoroutine(Fade(1f));
+            StartCoroutine(Fade(0f));
         }
 
         public void FadeOut()

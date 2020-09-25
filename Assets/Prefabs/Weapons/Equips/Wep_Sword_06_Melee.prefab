@@ -84,7 +84,7 @@ MonoBehaviour:
   useStrongAttack: 0
   distanceToAttack: 1
   attackID: 1
-  movesetID: 0
+  movesetID: 2
   staminaCost: 15
   staminaRecoveryDelay: 0.5
   defenseRate: 60

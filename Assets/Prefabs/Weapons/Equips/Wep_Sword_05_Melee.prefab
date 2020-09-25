@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebe2ea9c9ea0544d84d9c27f7470915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 1
+  openCloseEvents: 0
   openCloseWindow: 0
   selectedToolbar: 0
   damage:
@@ -84,14 +84,14 @@ MonoBehaviour:
   useStrongAttack: 0
   distanceToAttack: 1
   attackID: 1
-  movesetID: 0
+  movesetID: 2
   staminaCost: 15
   staminaRecoveryDelay: 0.5
   defenseRate: 60
   defenseRange: 90
   defenseID: 1
-  recoilID: 0
-  breakAttack: 1
+  recoilID: 1
+  breakAttack: 0
   onDefense:
     m_PersistentCalls:
       m_Calls: []

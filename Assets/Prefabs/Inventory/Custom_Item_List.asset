@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6467851451105932516
+--- !u!114 &-9158183473398324563
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,18 +10,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
-  m_Name: Shield
+  m_Name: Dull Sword
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   description: 
-  type: 4
+  type: 1
   icon: {fileID: 0}
   stackable: 0
   maxStack: 1
   amount: 0
-  originalObject: {fileID: 2505576836162854789, guid: 86d88d52153b39b49b66c09f7c0dbe6b,
+  originalObject: {fileID: 3496074088439096532, guid: 4a94cf539c55a5348928f7d3f813c213,
     type: 3}
-  dropObject: {fileID: 5706044829104311969, guid: 6f83092696c1041448135d288010d0cf,
+  dropObject: {fileID: 1059729714568511318, guid: 02b2d6e4e88d14f49a573ea6112aa984,
+    type: 3}
+  attributes: []
+  isInEquipArea: 0
+  destroyAfterUse: 0
+  canBeUsed: 0
+  canBeDroped: 1
+  canBeDestroyed: 1
+  EnableAnim: 
+  DisableAnim: 
+  enableDelayTime: 0
+  disableDelayTime: 0
+  customHandler: 
+  twoHandWeapon: 0
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-7645933580159649722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
+  m_Name: Damaged Sword
+  m_EditorClassIdentifier: 
+  id: 1
+  description: 
+  type: 1
+  icon: {fileID: 0}
+  stackable: 0
+  maxStack: 1
+  amount: 0
+  originalObject: {fileID: 3496074088439096532, guid: 9665e9c52d1c8cb42927c4dbfe8d5e37,
+    type: 3}
+  dropObject: {fileID: 1059729714568511318, guid: ef25b8c73de87ce4691e6c7936567b73,
     type: 3}
   attributes: []
   isInEquipArea: 0
@@ -76,44 +114,6 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-2269931112521527191
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
-  m_Name: Old Sword
-  m_EditorClassIdentifier: 
-  id: 0
-  description: 
-  type: 1
-  icon: {fileID: 0}
-  stackable: 0
-  maxStack: 1
-  amount: 0
-  originalObject: {fileID: 4259989685587095211, guid: 08272af930e29524c86673f06c1f8f3c,
-    type: 3}
-  dropObject: {fileID: 1059729714568511318, guid: 73e356e52882c437a9f9776c19d1d0f0,
-    type: 3}
-  attributes: []
-  isInEquipArea: 0
-  destroyAfterUse: 0
-  canBeUsed: 0
-  canBeDroped: 1
-  canBeDestroyed: 1
-  EnableAnim: 
-  DisableAnim: 
-  enableDelayTime: 0
-  disableDelayTime: 0
-  customHandler: 
-  twoHandWeapon: 0
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,47 +127,8 @@ MonoBehaviour:
   m_Name: Custom_Item_List
   m_EditorClassIdentifier: 
   items:
-  - {fileID: -2269931112521527191}
-  - {fileID: -6467851451105932516}
+  - {fileID: -9158183473398324563}
+  - {fileID: -7645933580159649722}
   - {fileID: -5599717347932531808}
-  - {fileID: 5646197877319330659}
-  inEdition: 1
+  inEdition: 0
   itemsHidden: 1
---- !u!114 &5646197877319330659
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adabc1ae49fd3c44a36cc9152ebb0f9, type: 3}
-  m_Name: Standard Sword
-  m_EditorClassIdentifier: 
-  id: 3
-  description: 
-  type: 1
-  icon: {fileID: 0}
-  stackable: 0
-  maxStack: 1
-  amount: 0
-  originalObject: {fileID: 3959933781171688413, guid: 9ff4251bb4c6f4551bd19806ac2c6e55,
-    type: 3}
-  dropObject: {fileID: 6942563148597917083, guid: 8005bf3042e8845238e981548146795c,
-    type: 3}
-  attributes: []
-  isInEquipArea: 0
-  destroyAfterUse: 0
-  canBeUsed: 0
-  canBeDroped: 1
-  canBeDestroyed: 1
-  EnableAnim: 
-  DisableAnim: 
-  enableDelayTime: 0
-  disableDelayTime: 0
-  customHandler: 
-  twoHandWeapon: 0
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []
