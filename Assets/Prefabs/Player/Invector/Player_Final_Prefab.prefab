@@ -2978,7 +2978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7949066052880934327
 Transform:
   m_ObjectHideFlags: 0
@@ -4476,7 +4476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7949035931165635917
 Transform:
   m_ObjectHideFlags: 0
@@ -4869,7 +4869,7 @@ GameObject:
   - component: {fileID: 1864421765}
   - component: {fileID: 2987122526758564572}
   m_Layer: 0
-  m_Name: Player_ThirdPerson_Melee_Invector
+  m_Name: Player_Final_Prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5738,6 +5738,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: daf1ca5bdea919449a790e5c0cb0aa1e, type: 3}
   - {fileID: 8300000, guid: b9922f1d854dfa54da4e271ab49c4981, type: 3}
   - {fileID: 8300000, guid: 11a7f30797996ce4091b37cf06a554e9, type: 3}
+  seedAudioClips:
+  - {fileID: 8300000, guid: c906d40c8655ea341a3b57fd2c300d9c, type: 3}
+  - {fileID: 8300000, guid: 35561c066c3fcd545b85bcf9d325f441, type: 3}
+  - {fileID: 8300000, guid: 341b7347bcce2fc4cb9af0e86c8aec29, type: 3}
+  - {fileID: 8300000, guid: 31607b52453f93043903f5672c3e29b1, type: 3}
+  - {fileID: 8300000, guid: 4e04479e076dabe40b93b13f4213d478, type: 3}
 --- !u!1 &7952459024062940155
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,7 +6016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1402523938, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1402523938, guid: 798ff87eff5874f22b22665f33f478f9, type: 3}
       propertyPath: openCloseEvents

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CoinCollectable : MonoBehaviour
+public class SeedCollectable : MonoBehaviour
 {
     public int value = 1;
     [SerializeField]
@@ -11,7 +11,7 @@ public class CoinCollectable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var mgr = other.GetComponent<CollectableManager>();
-            mgr.AddMoney(value);
+            mgr.AddSeeds(value);
             Instantiate(_effectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -31,6 +31,9 @@ TagManager:
   - Interactable
   - AIAction
   - GameUI
+  - FarmPlot
+  - CropBounds
+  - Crop
   layers:
   - Default
   - TransparentFX
