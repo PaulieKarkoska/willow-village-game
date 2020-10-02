@@ -5,12 +5,15 @@ public class FarmPlot : MonoBehaviour
     [Header("Collision")]
     [SerializeField]
     private Collider farmerCollider;
-    private bool playerIsInBounds;
 
     [Header("Farming")]
     [SerializeField]
+    private float plantingDistance = 1.5f;
+    [SerializeField]
     private GameObject _cropPrefab;
     private GameObject _cropInstance;
+
+    private CollectableManager _playerInventory;
 
     void Start()
     {
@@ -18,22 +21,17 @@ public class FarmPlot : MonoBehaviour
             Debug.Log("There is no farmer collider");
     }
 
-    void Update()
-    {
-
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("player is staying in the farm plot");
-
-            if (_cropInstance)
+            if (_cropInstance && _playerInventory.HasEnoughSeeds(1))
             {
                 if (_cropInstance.GetComponent<Crop>().isPlanted)
                 {
-                    _cropInstance = null;
+                    _cropInstance = Instantiate(_cropPrefab, CalculateCropPosition(other.transform), other.transform.rotation);
+                    _cropInstance.GetComponent<Crop>().playerInventory = _playerInventory;
                 }
                 else
                 {
@@ -48,11 +46,15 @@ public class FarmPlot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player entered farm plot");
-            playerIsInBounds = true;
+            _playerInventory = other.GetComponent<CollectableManager>();
 
-            if (!_cropInstance)
+            Debug.Log("player entered farm plot");
+
+            if (!_cropInstance && _playerInventory.HasEnoughSeeds(1))
+            {
                 _cropInstance = Instantiate(_cropPrefab, CalculateCropPosition(other.transform), other.transform.rotation);
+                _cropInstance.GetComponent<Crop>().playerInventory = _playerInventory;
+            }
         }
     }
 
@@ -61,7 +63,7 @@ public class FarmPlot : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("player exited farm plot");
-            playerIsInBounds = false;
+
             if (_cropInstance)
             {
                 if (_cropInstance.GetComponent<Crop>().isPlanted)
@@ -74,10 +76,14 @@ public class FarmPlot : MonoBehaviour
 
     private Vector3 CalculateCropPosition(Transform player)
     {
-        var playerPos = player.position;
-        var playerDir = player.forward;
-        var spawnDist = 2f;
+        var rayOrigin = player.position + new Vector3(0, 1, 0) + player.forward * plantingDistance;
 
-        return playerPos + playerDir * spawnDist;
+        Debug.DrawRay(rayOrigin, Vector3.down * 10, Color.red, 0.05f, true);
+
+        if (Physics.Raycast(rayOrigin, Vector3.down * 10, out RaycastHit hitInfo, 10)
+            && hitInfo.collider is MeshCollider)
+            return hitInfo.point;
+        else
+            return _cropInstance ? _cropInstance.transform.position : player.transform.position + player.forward * plantingDistance;
     }
 }
