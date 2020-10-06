@@ -34,6 +34,7 @@ TagManager:
   - FarmPlot
   - CropBounds
   - Crop
+  - Well
   layers:
   - Default
   - TransparentFX
@@ -53,7 +54,7 @@ TagManager:
   - BodyPart
   - BlockAIRayCast
   - FarmPlot
-  - 
+  - Interactable
   - 
   - 
   - 

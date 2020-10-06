@@ -274,10 +274,10 @@ public class Crop : MonoBehaviour
                 _waterSlider.gameObject.SetActive(false);
                 break;
 
-            //default:
-            //    iconImage.enabled = false;
-            //    _waterSlider.gameObject.SetActive(false);
-            //    break;
+                //default:
+                //    iconImage.enabled = false;
+                //    _waterSlider.gameObject.SetActive(false);
+                //    break;
 
         }
     }

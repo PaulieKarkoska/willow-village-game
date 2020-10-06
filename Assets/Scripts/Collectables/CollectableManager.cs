@@ -36,6 +36,20 @@ public class CollectableManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private int maxWaterLevel = 5;
+
+    private int _waterLevel = 0;
+    public int waterLevel
+    {
+        get { return _waterLevel; }
+        set
+        {
+            _waterLevel = value;
+            uiManager.UpdateWaterLevelText(value, maxWaterLevel);
+        }
+    }
+
     private void Start()
     {
         if (!uiManager)
@@ -70,10 +84,24 @@ public class CollectableManager : MonoBehaviour
         totalMoney -= moneyToRemove;
         return totalMoney;
     }
-
     public bool HasEnoughMoney(int cost)
     {
         return cost <= totalMoney;
+    }
+
+    public int RefillWaterLevel()
+    {
+        waterLevel = maxWaterLevel;
+        return waterLevel;
+    }
+    public int RemoveWater(int waterToRemove)
+    {
+        waterLevel -= waterToRemove;
+        return waterLevel;
+    }
+    public bool HasEnoughWater(int cost)
+    {
+        return cost <= waterLevel;
     }
 
     #region Audio
@@ -93,7 +121,7 @@ public class CollectableManager : MonoBehaviour
         }
 
         if (clips.Length > 0)
-            AudioSource.PlayClipAtPoint(clips[Random.Range(0, clips.Length - 1)], transform.position);
+            AudioSource.PlayClipAtPoint(clips[Random.Range(0, clips.Length)], transform.position);
     }
     #endregion
 
