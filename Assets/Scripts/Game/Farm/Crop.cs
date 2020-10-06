@@ -38,7 +38,6 @@ public class Crop : MonoBehaviour
     {
         get
         {
-            Debug.Log("isPlanted state: " + _state);
             return _state == CropState.Planted
                 || _state == CropState.NeedsWater
                 || _state == CropState.Dead
