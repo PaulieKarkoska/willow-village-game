@@ -3,46 +3,79 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField]
-    private TextMeshProUGUI _interactionText;
-    private Camera _camera;
+    public TextMeshProUGUI interactionText { get; private set; }
+    public Camera interactionCamera { get; private set; }
+    public Vector3 lookPoint { get; private set; }
 
     private Color32 _gray;
+    private IInteractable _lastInteractable;
 
     void Start()
     {
-        _gray = new Color32(173, 173, 173, 255);
-        _camera = Camera.main;
-        _interactionText = GameObject.FindGameObjectWithTag("GameUI").GetComponent<UIManager>().interactionText;
+        _gray = new Color32(180, 180, 180, 255);
+        interactionCamera = Camera.main;
+        interactionText = GameObject.FindGameObjectWithTag("GameUI").GetComponent<UIManager>().interactionText;
     }
 
     void Update()
     {
-        if (Physics.SphereCast(_camera.ScreenPointToRay(Input.mousePosition), 0.1f, out RaycastHit hitInfo, 3)
-            && hitInfo.transform.GetComponent<IInteractable>() != null)
+        var ray = interactionCamera.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 4, Color.green, 0.1f, true);
+
+        if (Physics.Raycast(ray.origin, ray.direction * 4, out RaycastHit hitInfo, 4))
         {
             var interactable = hitInfo.transform.GetComponent<IInteractable>();
-
-            if (interactable.canInteract(this.gameObject))
+            if (interactable != null)
             {
-                _interactionText.text = interactable.interactionText;
-                if (Input.GetKeyDown(interactable.interactionKey))
+                if (interactable != _lastInteractable)
                 {
-                    _interactionText.color = Color.white;
-                    interactable.interact(this.gameObject);
+                    _lastInteractable?.focusLost(this.gameObject);
+                    _lastInteractable = null;
+                }
+
+                _lastInteractable = interactable;
+
+                lookPoint = hitInfo.point;
+
+                if (interactable.supportsIntermediateInteraction && interactable.canIntermediateInteract(this.gameObject))
+                {
+                    interactable.intermediateInteract(this.gameObject);
+                }
+
+                if (interactable.canInteract(this.gameObject))
+                {
+                    interactionText.color = Color.white;
+                    interactionText.text = interactable.getInteractionText(this.gameObject);
+                    if (Input.GetKeyDown(interactable.interactionKey))
+                    {
+                        interactionText.color = Color.white;
+                        interactable.interact(this.gameObject);
+                    }
+                }
+                else
+                {
+                    interactionText.color = _gray;
+                    interactionText.text = interactable.getInteractionInvalidText(this.gameObject);
                 }
             }
             else
             {
-                _interactionText.color = _gray;
-                _interactionText.text = interactable.interactionInvalidText;
+                interactionText.color = Color.white;
+                interactionText.text = string.Empty;
             }
         }
         else
         {
-            _interactionText.color = Color.white;
-            _interactionText.text = string.Empty;
+            if (_lastInteractable != null)
+            {
+                if (_lastInteractable != null)
+                {
+                    _lastInteractable.focusLost(this.gameObject);
+                    _lastInteractable = null;
+                }
+            }
+            interactionText.color = Color.white;
+            interactionText.text = string.Empty;
         }
     }
 }

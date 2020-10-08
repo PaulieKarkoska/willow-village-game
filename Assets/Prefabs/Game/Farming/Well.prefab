@@ -108,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628481833309943414}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -196,6 +196,11 @@ MonoBehaviour:
   _waterAudioClips:
   - {fileID: 8300000, guid: 611d1bfd9f8421d4ab8abd5c113930da, type: 3}
   - {fileID: 8300000, guid: b776e374ce326df449dc0c0c82f35615, type: 3}
+  - {fileID: 8300000, guid: 2bf83d53b8879f641bec7348b1d4cc40, type: 3}
+  - {fileID: 8300000, guid: 984d2085cbfc4424582f5d36db5dfb8e, type: 3}
+  - {fileID: 8300000, guid: e380f3156d8fb804c912ca18f033672e, type: 3}
+  - {fileID: 8300000, guid: 64dd22af417dd29429ac7edfcdac6709, type: 3}
+  - {fileID: 8300000, guid: 01b86cc4f18b8e149924fd8825f7d4ac, type: 3}
 --- !u!1 &4781852820303756355
 GameObject:
   m_ObjectHideFlags: 0

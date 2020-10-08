@@ -2,12 +2,18 @@
 
 public interface IInteractable
 {
-    string interactionText { get; }
-    string interactionInvalidText { get; }
+    void focusLost(GameObject obj);
 
-    void interact(GameObject obj);
+    string getInteractionText(GameObject obj);
+    string getInteractionInvalidText(GameObject obj);
+
+    bool supportsIntermediateInteraction { get; }
 
     bool canInteract(GameObject obj);
+    void interact(GameObject obj);
+
+    bool canIntermediateInteract(GameObject obj);
+    void intermediateInteract(GameObject obj);
 
     KeyCode interactionKey { get; }
 }

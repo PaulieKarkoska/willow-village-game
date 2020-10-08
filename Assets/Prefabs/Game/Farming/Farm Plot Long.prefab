@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3900627497377928654}
   - component: {fileID: 3930630815014923362}
   - component: {fileID: 3548010614376047288}
-  m_Layer: 2
+  m_Layer: 17
   m_Name: Farm Plot Long
   m_TagString: FarmPlot
   m_Icon: {fileID: 0}
@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70e7208b9395894ebde6ff34172cd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmerCollider: {fileID: 3548010614376047288}
   plantingDistance: 1.5
   _cropPrefab: {fileID: 4595096118284860304, guid: 22a967d0dadad8347add46e4dd19abd6,
     type: 3}
@@ -125,7 +124,7 @@ BoxCollider:
   m_GameObject: {fileID: 3946198542001284978}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.9590445, y: 1.7544899, z: 10.1083145}
   m_Center: {x: 0, y: 0.17933676, z: 0}
@@ -186,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824608967969454, guid: 8dadbdebd7aa1a84e90341a7c4efd21d, type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4410224853831496, guid: 8dadbdebd7aa1a84e90341a7c4efd21d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class Crop : MonoBehaviour
+public class Crop : MonoBehaviour, IInteractable
 {
+    #region Properties and Fields
     [Header("Materials")]
     [SerializeField]
     Material validMaterial;
@@ -49,76 +51,65 @@ public class Crop : MonoBehaviour
     private Slider _waterSlider;
 
     private CropState _state = CropState.Invalid;
-    private CropState state
+    public CropState state
     {
         get { return _state; }
-        set
+        private set
         {
+            var lastState = _state;
             _state = value;
-            OnStateChanged(value);
+            OnStateChanged(lastState, value);
         }
     }
 
     public CollectableManager playerInventory { get; set; }
 
-    private bool isInBounds = false;
-    private bool hasCropCollision = false;
+    public KeyCode interactionKey { get; } = KeyCode.E;
+
+    public bool isInBounds { get; private set; } = false;
+    public bool hasCropCollision { get; private set; } = false;
+    #endregion
 
     void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _waterSlider = GetComponentInChildren<Slider>(true);
-        iconImage.sprite = deadIcon;
         SetValidity();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            switch (state)
-            {
-                case CropState.Valid:
-                    Plant();
-                    break;
-                case CropState.Dead:
-                    Remove();
-                    break;
-                case CropState.Complete:
-                    Harvest();
-                    break;
-            }
-    }
-
-    private void FixedUpdate()
-    {
-        if (isPlanted)
-        {
-            timeToHarvest -= Time.fixedDeltaTime;
-            remainingWaterTime -= Time.fixedDeltaTime;
-            if (remainingWaterTime <= 0f)
-                state = CropState.NeedsWater;
-            else
-            {
-                remainingHarvestTime -= Time.fixedDeltaTime;
-                if (remainingHarvestTime <= 0)
-                    state = CropState.Complete;
-            }
-        }
-    }
-
-    private void LateUpdate()
-    {
         switch (state)
         {
             case CropState.Planted:
-                _waterSlider.value = remainingWaterTime / waterInterval;
+                timeToHarvest -= Time.fixedDeltaTime;
+                remainingWaterTime -= Time.fixedDeltaTime;
+                if (remainingWaterTime <= 0f)
+                    state = CropState.NeedsWater;
+                else
+                {
+                    remainingHarvestTime -= Time.fixedDeltaTime;
+                    if (remainingHarvestTime <= 0)
+                        state = CropState.Complete;
+                }
                 break;
 
             case CropState.NeedsWater:
                 currentRotTime -= Time.deltaTime;
                 if (currentRotTime <= 0)
-                    Kill();
+                    state = CropState.Dead;
                 break;
+
+            default:
+                break;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (state == CropState.Planted)
+        {
+            _waterSlider.value = remainingWaterTime / waterInterval;
         }
     }
 
@@ -135,6 +126,7 @@ public class Crop : MonoBehaviour
             SetValidity();
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Crop"))
@@ -166,13 +158,13 @@ public class Crop : MonoBehaviour
 
     public void Plant()
     {
-        playerInventory.RemoveSeeds(1);
         state = CropState.Planted;
     }
 
     public void Water()
     {
-        OnWatered();
+        //TODO: Play water sound
+        state = CropState.Planted;
     }
 
     public void Kill()
@@ -182,16 +174,19 @@ public class Crop : MonoBehaviour
 
     public void Harvest()
     {
-
+        //TODO: Play harvest sound
+        //TODO: make coins pop out of the successfully harvested crop
     }
 
     public void Remove()
     {
+        //TODO: Play remove sound
+        Destroy(this.gameObject);
     }
 
-    private void OnStateChanged(CropState value)
+    private void OnStateChanged(CropState previous, CropState current)
     {
-        switch (value)
+        switch (current)
         {
             case CropState.Invalid:
                 OnIsInvalid();
@@ -200,8 +195,8 @@ public class Crop : MonoBehaviour
                 OnIsValid();
                 break;
             case CropState.Planted:
-                OnPlanted();
-                OnWatered();
+                OnWatered(previous == CropState.NeedsWater || previous == CropState.Planted);
+                OnPlanted(previous == CropState.Valid);
                 break;
             case CropState.NeedsWater:
                 OnNeedsWater();
@@ -224,15 +219,23 @@ public class Crop : MonoBehaviour
     {
         _meshRenderer.material = validMaterial;
     }
-    private void OnPlanted()
+    private void OnPlanted(bool takeSeeds = true)
     {
+        if (takeSeeds)
+            playerInventory.RemoveSeeds(1);
+
         remainingHarvestTime = timeToHarvest;
         remainingWaterTime = waterInterval;
 
         _meshRenderer.material = defaultMaterial;
+        gameObject.layer = 19;
+
     }
-    private void OnWatered()
+    private void OnWatered(bool takeWater = true)
     {
+        if (takeWater)
+            playerInventory.RemoveWater(1);
+
         remainingWaterTime = waterInterval;
     }
     private void OnNeedsWater()
@@ -241,6 +244,7 @@ public class Crop : MonoBehaviour
     }
     private void OnDead()
     {
+
     }
     private void OnCompleted()
     {
@@ -265,6 +269,7 @@ public class Crop : MonoBehaviour
             case CropState.Dead:
                 iconImage.enabled = true;
                 iconImage.sprite = deadIcon;
+                _meshRenderer.material = deadMaterial;
                 _waterSlider.gameObject.SetActive(false);
                 break;
 
@@ -280,6 +285,101 @@ public class Crop : MonoBehaviour
                 //    break;
 
         }
+    }
+
+    public bool supportsIntermediateInteraction { get; } = false;
+
+    public string getInteractionText(GameObject player)
+    {
+        switch (state)
+        {
+            case CropState.Planted:
+            case CropState.NeedsWater:
+                return "Water crop";
+
+            case CropState.Complete:
+                return "Harvest crop";
+
+            case CropState.Dead:
+                return "Remove dead crop";
+
+            case CropState.Valid:
+                return "Plant crop";
+
+            default:
+                return string.Empty;
+        }
+    }
+
+    public string getInteractionInvalidText(GameObject player)
+    {
+        switch (state)
+        {
+            case CropState.Valid:
+            case CropState.Invalid:
+                return "Cannot place crop so close to another crop";
+
+            case CropState.Planted:
+            case CropState.NeedsWater:
+                return "Not enough water in inventory";
+
+            default:
+                return string.Empty;
+        }
+    }
+
+    public bool canInteract(GameObject player)
+    {
+        switch (state)
+        {
+            case CropState.Planted:
+            case CropState.NeedsWater:
+                return playerInventory.HasEnoughWater(1);
+
+            case CropState.Dead:
+            case CropState.Complete:
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
+    public void interact(GameObject player)
+    {
+        switch (state)
+        {
+            case CropState.Planted:
+            case CropState.NeedsWater:
+                Water();
+                return;
+
+            case CropState.Complete:
+                Harvest();
+                return;
+
+            case CropState.Dead:
+                Remove();
+                return;
+
+            case CropState.Valid:
+                Plant();
+                return;
+        }
+    }
+
+    public bool canIntermediateInteract(GameObject player)
+    {
+        throw new NotImplementedException($"canIntermediateInteract is not supported and should not be called on this object: {this.GetType().Name}");
+    }
+
+    public void intermediateInteract(GameObject player)
+    {
+        throw new NotImplementedException($"intermediateInteract is not supported and should not be called on this object: {this.GetType().Name}");
+    }
+
+    public void focusLost(GameObject obj)
+    {
     }
 }
 

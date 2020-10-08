@@ -5274,7 +5274,7 @@ MonoBehaviour:
   hud: {fileID: 0}
   lockMoveInput: 0
   weakAttackInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Mouse0
     keyboardAxis: 0
@@ -5289,7 +5289,7 @@ MonoBehaviour:
     lastTimeTheButtonWasPressed: 0
     inButtomTimer: 0
   strongAttackInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Alpha1
     keyboardAxis: 0
@@ -5304,7 +5304,7 @@ MonoBehaviour:
     lastTimeTheButtonWasPressed: 0
     inButtomTimer: 0
   blockInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Mouse1
     keyboardAxis: 0
@@ -5758,7 +5758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17222c77e242d6a4998ab4a5ce199365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionText: {fileID: 0}
 --- !u!1 &7952459024062940155
 GameObject:
   m_ObjectHideFlags: 0

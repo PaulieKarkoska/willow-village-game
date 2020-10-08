@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 
-public class FarmPlot : MonoBehaviour
+public class FarmPlot : MonoBehaviour, IInteractable
 {
-    [Header("Collision")]
-    [SerializeField]
-    private Collider farmerCollider;
-
     [Header("Farming")]
     [SerializeField]
     private float plantingDistance = 1.5f;
@@ -18,11 +14,12 @@ public class FarmPlot : MonoBehaviour
 
     private Quaternion _cropRotation = Quaternion.identity;
 
+    public bool supportsIntermediateInteraction { get; } = true;
+
+    public KeyCode interactionKey { get; } = KeyCode.E;
+
     void Start()
     {
-        if (!farmerCollider)
-            Debug.Log("There is no farmer collider");
-
         _camera = Camera.main;
     }
 
@@ -36,88 +33,96 @@ public class FarmPlot : MonoBehaviour
             _cropInstance.transform.Rotate(rotation, Space.Self);
             _cropRotation = _cropInstance.transform.rotation;
         }
+
     }
 
-    private void OnTriggerStay(Collider other)
+    public string getInteractionText(GameObject player)
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("player is staying in the farm plot");
-            if (_cropInstance && _playerInventory.HasEnoughSeeds(1))
-            {
-                if (_cropInstance.GetComponent<Crop>().isPlanted)
-                {
-                    _cropInstance = Instantiate(_cropPrefab, CalculateCropPosition(other.transform, out _), _cropRotation);
-                    _cropInstance.GetComponent<Crop>().playerInventory = _playerInventory;
-                }
-                else
-                {
-                    _cropInstance.transform.position = CalculateCropPosition(other.transform, out _);
-                }
-            }
-            else if (!_cropInstance && _playerInventory.HasEnoughSeeds(1))
-            {
-                var pos = CalculateCropPosition(other.transform, out bool isInRange);
-                if (isInRange)
-                {
-                    _cropInstance = Instantiate(_cropPrefab, pos, _cropRotation);
-                    _cropInstance.GetComponent<Crop>().playerInventory = _playerInventory;
-                }
-            }
-        }
+        return "Plant crop";
     }
 
-    private void OnTriggerEnter(Collider other)
+    public string getInteractionInvalidText(GameObject player)
     {
-        if (other.CompareTag("Player"))
+        if (_cropInstance)
         {
-            _playerInventory = other.GetComponent<CollectableManager>();
-
-            Debug.Log("player entered farm plot");
-
-            if (!_cropInstance && _playerInventory.HasEnoughSeeds(1))
+            var crop = _cropInstance.GetComponent<Crop>();
+            switch (crop.state)
             {
-                _cropInstance = Instantiate(_cropPrefab, CalculateCropPosition(other.transform, out bool isInRange), other.transform.rotation);
-                _cropInstance.GetComponent<Crop>().playerInventory = _playerInventory;
+                case CropState.Valid:
+                case CropState.Invalid:
+                    if (crop.hasCropCollision)
+                        return "Cannot place crop so close to another crop";
+                    else if (!crop.isInBounds)
+                        return "Can only plant crop in center of farm plot";
+                    else
+                        return "Invalid crop placement";
+
+                case CropState.Planted:
+                case CropState.NeedsWater:
+                    return "Not enough water in inventory";
+
+                default:
+                    return string.Empty;
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("player exited farm plot");
-
-            if (_cropInstance)
-            {
-                if (_cropInstance.GetComponent<Crop>().isPlanted)
-                    _cropInstance = null;
-                else
-                    Destroy(_cropInstance);
-            }
-        }
-    }
-
-    private Vector3 CalculateCropPosition(Transform player, out bool isInRange)
-    {
-        //var rayOrigin = player.position + new Vector3(0, 1, 0) + player.forward * plantingDistance;
-
-        var ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-        Debug.DrawRay(ray.origin, ray.direction, Color.red, 0.05f, true);
-
-        if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hitInfo, 10)
-            && hitInfo.collider is MeshCollider)
-        {
-            isInRange = true;
-            return hitInfo.point;
         }
         else
+            return string.Empty;
+    }
+
+    public bool canInteract(GameObject player)
+    {
+        if (_cropInstance)
         {
-            isInRange = false;
+            var crop = _cropInstance.GetComponent<Crop>();
+            switch (crop.state)
+            {
+                case CropState.Valid:
+                case CropState.Invalid:
+                    return !crop.hasCropCollision && crop.isInBounds;
+
+                case CropState.Planted:
+                case CropState.NeedsWater:
+                    return crop.playerInventory.HasEnoughWater(1);
+
+                case CropState.Dead:
+                case CropState.Complete:
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+        return _cropInstance;
+    }
+
+    public void interact(GameObject player)
+    {
+        _cropInstance.GetComponent<Crop>().Plant();
+        _cropInstance = null;
+    }
+
+    public bool canIntermediateInteract(GameObject player)
+    {
+        return true;
+
+    }
+
+    public void intermediateInteract(GameObject player)
+    {
+        if (_cropInstance == null)
+        {
+            _cropInstance = Instantiate(_cropPrefab, player.GetComponent<InteractionManager>().lookPoint, _cropRotation);
+            _cropInstance.GetComponent<Crop>().playerInventory = player.GetComponent<CollectableManager>();
+        }
+
+        _cropInstance.transform.position = player.GetComponent<InteractionManager>().lookPoint;
+    }
+
+    public void focusLost(GameObject obj)
+    {
+        if (_cropInstance)
+        {
             Destroy(_cropInstance);
-            return _cropInstance ? _cropInstance.transform.position : player.transform.position + player.forward * plantingDistance;
         }
     }
 }
