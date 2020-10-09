@@ -4,12 +4,9 @@ public class FarmPlot : MonoBehaviour, IInteractable
 {
     [Header("Farming")]
     [SerializeField]
-    private float plantingDistance = 1.5f;
-    [SerializeField]
     private GameObject _cropPrefab;
     private GameObject _cropInstance;
 
-    private CollectableManager _playerInventory;
     private Camera _camera;
 
     private Quaternion _cropRotation = Quaternion.identity;
@@ -54,6 +51,8 @@ public class FarmPlot : MonoBehaviour, IInteractable
                         return "Cannot place crop so close to another crop";
                     else if (!crop.isInBounds)
                         return "Can only plant crop in center of farm plot";
+                    else if (!crop.playerInventory.HasEnoughSeeds(1))
+                        return "Not enough seeds";
                     else
                         return "Invalid crop placement";
 
@@ -78,7 +77,7 @@ public class FarmPlot : MonoBehaviour, IInteractable
             {
                 case CropState.Valid:
                 case CropState.Invalid:
-                    return !crop.hasCropCollision && crop.isInBounds;
+                    return !crop.hasCropCollision && crop.isInBounds && crop.playerInventory.HasEnoughSeeds(1);
 
                 case CropState.Planted:
                 case CropState.NeedsWater:

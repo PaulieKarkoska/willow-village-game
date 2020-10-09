@@ -6,6 +6,11 @@ public class SeedCollectable : MonoBehaviour
     [SerializeField]
     private GameObject _effectPrefab;
 
+    private void Start()
+    {
+        Destroy(gameObject, 120);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

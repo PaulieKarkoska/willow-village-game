@@ -6,4 +6,5 @@
     NeedsWater = 3,
     Dead = 4,
     Complete = 5,
+    Disappearing = 6,
 }

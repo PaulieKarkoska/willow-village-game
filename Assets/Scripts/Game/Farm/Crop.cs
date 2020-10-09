@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,12 @@ public class Crop : MonoBehaviour, IInteractable
     [SerializeField]
     Material deadMaterial;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip waterClip;
+    [SerializeField]
+    private AudioClip[] harvestRemoveClips;
+
     [Header("GUI")]
     [SerializeField]
     private Image iconImage;
@@ -26,6 +33,10 @@ public class Crop : MonoBehaviour, IInteractable
     private Sprite harvestIcon;
 
     [Header("Farming")]
+    [SerializeField]
+    private GameObject plantMeshGameObject;
+    [SerializeField]
+    private Vector3 originalPlantScale = new Vector3(0.15f, 0.15f, 0.15f);
     [SerializeField]
     private float timeToHarvest = 120f;
     private float remainingHarvestTime;
@@ -74,6 +85,7 @@ public class Crop : MonoBehaviour, IInteractable
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _waterSlider = GetComponentInChildren<Slider>(true);
+        plantMeshGameObject.transform.localScale = originalPlantScale;
         SetValidity();
     }
 
@@ -82,13 +94,15 @@ public class Crop : MonoBehaviour, IInteractable
         switch (state)
         {
             case CropState.Planted:
-                timeToHarvest -= Time.fixedDeltaTime;
-                remainingWaterTime -= Time.fixedDeltaTime;
+                remainingHarvestTime -= Time.deltaTime;
+                remainingWaterTime -= Time.deltaTime;
                 if (remainingWaterTime <= 0f)
                     state = CropState.NeedsWater;
                 else
                 {
-                    remainingHarvestTime -= Time.fixedDeltaTime;
+                    plantMeshGameObject.transform.localScale = Vector3.Lerp(originalPlantScale, Vector3.one, 1 - (remainingHarvestTime / timeToHarvest));
+
+                    remainingHarvestTime -= Time.deltaTime;
                     if (remainingHarvestTime <= 0)
                         state = CropState.Complete;
                 }
@@ -153,17 +167,21 @@ public class Crop : MonoBehaviour, IInteractable
     private void SetValidity()
     {
         if (!isPlanted)
-            state = isInBounds && !hasCropCollision ? CropState.Valid : CropState.Invalid;
+            state = isInBounds && !hasCropCollision && playerInventory.HasEnoughSeeds(1) ? CropState.Valid : CropState.Invalid;
     }
 
     public void Plant()
     {
+        var plant = gameObject.transform.Find("Plant");
+        plant.gameObject.SetActive(true);
+        var thisMeshRenderer = GetComponent<MeshRenderer>();
+        thisMeshRenderer.enabled = false;
         state = CropState.Planted;
     }
 
     public void Water()
     {
-        //TODO: Play water sound
+        AudioSource.PlayClipAtPoint(waterClip, transform.position);
         state = CropState.Planted;
     }
 
@@ -174,14 +192,18 @@ public class Crop : MonoBehaviour, IInteractable
 
     public void Harvest()
     {
-        //TODO: Play harvest sound
-        //TODO: make coins pop out of the successfully harvested crop
+        PlayHarvestRemoveClip();
+        var emitter = GetComponent<PrefabEmitter>();
+        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 0, 5, 10);
+        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 1, 1, 3);
+
+        StartCoroutine(ShrinkAndDisappear());
     }
 
     public void Remove()
     {
-        //TODO: Play remove sound
-        Destroy(this.gameObject);
+        PlayHarvestRemoveClip();
+        StartCoroutine(ShrinkAndDisappear());
     }
 
     private void OnStateChanged(CropState previous, CropState current)
@@ -207,6 +229,8 @@ public class Crop : MonoBehaviour, IInteractable
             case CropState.Complete:
                 OnCompleted();
                 break;
+            case CropState.Disappearing:
+                break;
         }
         UpdateUi();
     }
@@ -219,12 +243,14 @@ public class Crop : MonoBehaviour, IInteractable
     {
         _meshRenderer.material = validMaterial;
     }
-    private void OnPlanted(bool takeSeeds = true)
+    private void OnPlanted(bool isFirstTime = true)
     {
-        if (takeSeeds)
+        if (isFirstTime)
+        {
+            remainingHarvestTime = timeToHarvest;
             playerInventory.RemoveSeeds(1);
+        }
 
-        remainingHarvestTime = timeToHarvest;
         remainingWaterTime = waterInterval;
 
         _meshRenderer.material = defaultMaterial;
@@ -271,6 +297,7 @@ public class Crop : MonoBehaviour, IInteractable
                 iconImage.sprite = deadIcon;
                 _meshRenderer.material = deadMaterial;
                 _waterSlider.gameObject.SetActive(false);
+                plantMeshGameObject.GetComponent<MeshRenderer>().material = deadMaterial;
                 break;
 
             case CropState.Complete:
@@ -324,6 +351,7 @@ public class Crop : MonoBehaviour, IInteractable
                 return "Not enough water in inventory";
 
             default:
+            case CropState.Disappearing:
                 return string.Empty;
         }
     }
@@ -341,6 +369,7 @@ public class Crop : MonoBehaviour, IInteractable
                 return true;
 
             default:
+            case CropState.Disappearing:
                 return false;
         }
     }
@@ -361,10 +390,6 @@ public class Crop : MonoBehaviour, IInteractable
             case CropState.Dead:
                 Remove();
                 return;
-
-            case CropState.Valid:
-                Plant();
-                return;
         }
     }
 
@@ -381,140 +406,32 @@ public class Crop : MonoBehaviour, IInteractable
     public void focusLost(GameObject obj)
     {
     }
+
+    private void PlayHarvestRemoveClip()
+    {
+        if (harvestRemoveClips?.Length > 0)
+        {
+            var index = UnityEngine.Random.Range(0, harvestRemoveClips.Length - 1);
+            AudioSource.PlayClipAtPoint(harvestRemoveClips[index], transform.position);
+        }
+    }
+    private IEnumerator ShrinkAndDisappear()
+    {
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+
+        var origScale = plantMeshGameObject.transform.localScale;
+        var totalTime = 0.1f;
+
+        var currentTime = 0f;
+
+        do
+        {
+            plantMeshGameObject.transform.localScale = Vector3.Lerp(origScale, Vector3.zero, currentTime / totalTime);
+            currentTime += Time.deltaTime;
+            yield return null;
+        } while (currentTime <= totalTime);
+
+        //If harvesting and completed, explode with coins, leaves, and seeds
+        Destroy(gameObject);
+    }
 }
-
-//private bool _isInBounds;
-//private bool _isClearOfOtherCrops = true;
-//public bool canPlant
-//{
-//    get { return GetCanPlant(); }
-//}
-//private bool _isReady = false;
-
-//public bool isPlanted { get; private set; } = false;
-//public bool isDead { get; private set; } = false;
-//public bool needsWater { get; private set; } = false;
-
-//void Start()
-//{
-//    _meshRenderer = GetComponent<MeshRenderer>();
-//    _waterSlider = GetComponentInChildren<Slider>(true);
-//    _cropUi = transform.GetChild(0).gameObject;
-//    _isReady = true;
-//}
-
-//private void FixedUpdate()
-//{
-//    if (isPlanted && !needsWater)
-//    {
-//        timeToHarvest -= Time.fixedDeltaTime / 2;
-//        remainingWaterTime -= Time.fixedDeltaTime / 2;
-//        if (remainingWaterTime <= 0f)
-//            needsWater = true;
-//    }
-//}
-
-//private void Update()
-//{
-//    if (canPlant && Input.GetKeyDown(KeyCode.E))
-//    {
-//        Plant();
-//    }
-//}
-
-//private void LateUpdate()
-//{
-//    if (isPlanted)
-//    {
-//        if (!needsWater)
-//        {
-//            UpdateWaterSlider();
-//        }
-//        else
-//        {
-//            currentRotTime += Time.deltaTime;
-//            if (currentRotTime >= maxRotTime)
-//                KillCrop();
-//        }
-//    }
-//}
-
-//private void OnTriggerEnter(Collider other)
-//{
-//    if (other.CompareTag("CropBounds"))
-//    {
-//        _isInBounds = true;
-//        GetCanPlant();
-//    }
-//    else if (other.CompareTag("Crop"))
-//    {
-//        _isClearOfOtherCrops = false;
-//        GetCanPlant();
-//    }
-//}
-
-//private void OnTriggerExit(Collider other)
-//{
-//    if (other.CompareTag("CropBounds"))
-//    {
-//        _isInBounds = false;
-//        GetCanPlant();
-//    }
-//    else if (other.CompareTag("Crop"))
-//    {
-//        _isClearOfOtherCrops = true;
-//        GetCanPlant();
-//    }
-//}
-
-//private void OnTriggerStay(Collider other)
-//{
-//    if (other.CompareTag("Crop"))
-//    {
-//        _isClearOfOtherCrops = false;
-//        GetCanPlant();
-//    }
-//}
-
-//private bool GetCanPlant(bool update = true)
-//{
-//    var result = !isPlanted && !isDead && _isInBounds && _isClearOfOtherCrops;
-//    if (_isReady && update)
-//        _meshRenderer.material = result ? validMaterial : invalidMaterial;
-
-//    return result;
-//}
-//private void UpdateWaterSlider()
-//{
-//    _waterSlider.value = remainingWaterTime / waterInterval;
-//}
-
-//public void Plant()
-//{
-//    remainingHarvestTime = timeToHarvest;
-//    remainingWaterTime = waterInterval;
-
-//    GetComponent<SphereCollider>().enabled = false;
-//    _cropUi.SetActive(true);
-
-//    _meshRenderer.material = defaultMaterial;
-//    isPlanted = true;
-//}
-
-//public void Water()
-//{
-//    needsWater = false;
-
-//}
-
-//public void KillCrop()
-//{
-//    isDead = true;
-//    _meshRenderer.material = deadMaterial;
-//}
-
-//public void Harvest()
-//{
-
-//}
-//}
