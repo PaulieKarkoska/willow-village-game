@@ -6,7 +6,7 @@ public class Rotator : MonoBehaviour
     [SerializeField]
     private Vector3 direction = Vector3.up;
     [SerializeField]
-    private float speed = 10;
+    private float speed = 100;
 
     void Update()
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,13 +51,17 @@ public class Crop : MonoBehaviour, IInteractable
     [Header("Rewards")]
     [SerializeField]
     private static int minCoinReward = 1;
+    public static int GetMinCoinReward() => minCoinReward;
     [SerializeField]
     private static int maxCoinReward = 3;
+    public static int GetMaxCoinReward() => maxCoinReward;
     [Space(height: 10f)]
     [SerializeField]
     private static int minSeedReward = 1;
+    public static int GetMinSeedReward() => minSeedReward;
     [SerializeField]
-    private static int maxSeedReward = 1;
+    private static int maxSeedReward = 2;
+    public static int GetMaxSeedReward() => maxSeedReward;
 
     public bool isPlanted
     {
@@ -444,5 +449,13 @@ public class Crop : MonoBehaviour, IInteractable
 
         //If harvesting and completed, explode with coins, leaves, and seeds
         Destroy(gameObject);
+    }
+
+    public static void UpgradeHarvestReward()
+    {
+        maxSeedReward++;
+
+        minCoinReward++;
+        maxCoinReward++;
     }
 }

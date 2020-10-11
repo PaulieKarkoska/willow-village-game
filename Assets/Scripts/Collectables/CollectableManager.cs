@@ -34,7 +34,16 @@ public class CollectableManager : MonoBehaviour
         }
     }
 
-    public int maxWaterLevel = 3;
+    private int _maxWaterLevel = 5;
+    public int maxWaterLevel
+    {
+        get { return _maxWaterLevel; }
+        set
+        {
+            _maxWaterLevel = value;
+            uiManager.UpdateWaterLevelText(waterLevel, value);
+        }
+    }
     private int _waterLevel = 0;
     public int waterLevel
     {

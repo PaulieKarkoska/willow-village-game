@@ -23,7 +23,8 @@ public class Well : MonoBehaviour, IInteractable
 
     public bool canInteract(GameObject player)
     {
-        return player.CompareTag("Player") && player.GetComponent<CollectableManager>() && player.GetComponent<CollectableManager>().waterLevel < 5;
+        var inventory = player.GetComponent<CollectableManager>();
+        return player.CompareTag("Player") && inventory != null && inventory.waterLevel < inventory.maxWaterLevel;
     }
     public void interact(GameObject player)
     {

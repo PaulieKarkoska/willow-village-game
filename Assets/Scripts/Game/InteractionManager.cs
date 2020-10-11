@@ -19,12 +19,13 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
+        IInteractable interactable = null;
         var ray = interactionCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 4, Color.green, 0.1f, true);
 
         if (Physics.Raycast(ray.origin, ray.direction * 4, out RaycastHit hitInfo, 4))
         {
-            var interactable = hitInfo.transform.GetComponent<IInteractable>();
+            interactable = hitInfo.transform.GetComponent<IInteractable>();
             if (interactable != null)
             {
                 if (interactable != _lastInteractable)
@@ -66,16 +67,14 @@ public class InteractionManager : MonoBehaviour
         }
         else
         {
-            if (_lastInteractable != null)
-            {
-                if (_lastInteractable != null)
-                {
-                    _lastInteractable.focusLost(this.gameObject);
-                    _lastInteractable = null;
-                }
-            }
             interactionText.color = Color.white;
             interactionText.text = string.Empty;
+        }
+
+        if (_lastInteractable != null && interactable != _lastInteractable)
+        {
+            _lastInteractable.focusLost(this.gameObject);
+            _lastInteractable = null;
         }
     }
 }
