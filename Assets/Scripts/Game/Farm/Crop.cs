@@ -47,6 +47,17 @@ public class Crop : MonoBehaviour, IInteractable
     private float maxRotTime = 180f;
     private float currentRotTime;
 
+    [Header("Rewards")]
+    [SerializeField]
+    private static int minCoinReward = 1;
+    [SerializeField]
+    private static int maxCoinReward = 3;
+    [Space(height: 10f)]
+    [SerializeField]
+    private static int minSeedReward = 1;
+    [SerializeField]
+    private static int maxSeedReward = 1;
+
     public bool isPlanted
     {
         get
@@ -194,8 +205,8 @@ public class Crop : MonoBehaviour, IInteractable
     {
         PlayHarvestRemoveClip();
         var emitter = GetComponent<PrefabEmitter>();
-        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 0, 5, 10);
-        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 1, 1, 3);
+        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 0, minCoinReward, maxCoinReward);
+        emitter.Emit(transform.position, Vector3.up * 200, new Vector3(0.1f, 0.1f, 0.1f), 1, minSeedReward, maxSeedReward);
 
         StartCoroutine(ShrinkAndDisappear());
     }

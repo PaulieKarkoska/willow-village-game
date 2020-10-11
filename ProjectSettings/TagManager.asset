@@ -35,6 +35,8 @@ TagManager:
   - CropBounds
   - Crop
   - Well
+  - Upgrade
+  - Store
   layers:
   - Default
   - TransparentFX

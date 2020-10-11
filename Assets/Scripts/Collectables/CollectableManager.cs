@@ -7,10 +7,8 @@ public class CollectableManager : MonoBehaviour
     private UIManager uiManager;
 
     [Header("Audio")]
-    [SerializeField]
-    private AudioClip[] moneyAudioClips;
-    [SerializeField]
-    private AudioClip[] seedAudioClips;
+    public AudioClip[] moneyAudioClips;
+    public AudioClip[] seedAudioClips;
 
     private int _totalSeeds = 0;
     public int totalSeeds
@@ -36,9 +34,7 @@ public class CollectableManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private int maxWaterLevel = 5;
-
+    public int maxWaterLevel = 3;
     private int _waterLevel = 0;
     public int waterLevel
     {
