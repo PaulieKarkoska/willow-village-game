@@ -24,7 +24,8 @@ public abstract class BuyableUpgrade : MonoBehaviour
 
     public virtual int SetNewMoneyCost()
     {
-        currentMoneyCost = (int)(originalMoneyCost + (originalMoneyCost * 0.5));
+        currentMoneyCost = (int)(currentMoneyCost + (originalMoneyCost * (0.1f + (currentLevel * 0.1f))));
+        Debug.Log(currentMoneyCost);
 
         return currentMoneyCost;
     }
@@ -48,7 +49,7 @@ public abstract class BuyableUpgrade : MonoBehaviour
 
     private void UpdateCostText()
     {
-        transform.GetComponentInChildren<TextMeshProUGUI>().text = GetCanUpgrade() ? $"${currentMoneyCost}" : "Sold Out";
+        transform.GetComponentInChildren<TextMeshProUGUI>().text = GetCanUpgrade() ? $"${currentMoneyCost}" : "Max";
     }
 
     protected void FocusCostBanner()

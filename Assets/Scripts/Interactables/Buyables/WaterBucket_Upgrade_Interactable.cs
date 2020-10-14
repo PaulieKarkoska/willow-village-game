@@ -2,9 +2,11 @@
 
 public class WaterBucket_Upgrade_Interactable : BuyableUpgrade, IInteractable
 {
+    [SerializeField]
+    private int originalCostOverride = 55;
     private void Awake()
     {
-        originalMoneyCost = 50;
+        originalMoneyCost = originalCostOverride;
         currentMoneyCost = originalMoneyCost;
     }
 
@@ -35,7 +37,7 @@ public class WaterBucket_Upgrade_Interactable : BuyableUpgrade, IInteractable
     {
         if (!player.GetComponent<CollectableManager>().HasEnoughMoney(currentMoneyCost))
             return $"Not enough money to buy {upgradeName}";
-        else if (GetCanUpgrade())
+        else if (!GetCanUpgrade())
             return "This upgrade is at max level";
         else
             return string.Empty;
