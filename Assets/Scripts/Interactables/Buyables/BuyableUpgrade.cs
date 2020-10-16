@@ -25,7 +25,6 @@ public abstract class BuyableUpgrade : MonoBehaviour
     public virtual int SetNewMoneyCost()
     {
         currentMoneyCost = (int)(currentMoneyCost + (originalMoneyCost * (0.1f + (currentLevel * 0.1f))));
-        Debug.Log(currentMoneyCost);
 
         return currentMoneyCost;
     }

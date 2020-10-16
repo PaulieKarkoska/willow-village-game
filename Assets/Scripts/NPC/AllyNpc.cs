@@ -1,7 +1,8 @@
-﻿using Invector.vMelee;
+﻿using Invector.vCharacterController.AI;
+using Invector.vMelee;
 using UnityEngine;
 
-public class EnemyNpc : MonoBehaviour
+public class AllyNpc : MonoBehaviour
 {
     [Header("Weapons")]
     [SerializeField]

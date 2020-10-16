@@ -80,7 +80,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   meleeManager: {fileID: 0}
-  meleeType: 2
+  meleeType: 1
   useStrongAttack: 0
   distanceToAttack: 1
   attackID: 1
@@ -190,7 +190,7 @@ BoxCollider:
   m_GameObject: {fileID: 6579445932554060522}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.025050491, y: 1.5130504, z: 0.07414305}
   m_Center: {x: -0.000000007450581, y: 0.58886755, z: 0.00000005960488}

@@ -37,6 +37,7 @@ TagManager:
   - Well
   - Upgrade
   - Store
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -58,7 +59,7 @@ TagManager:
   - FarmPlot
   - Interactable
   - Crop
-  - 
+  - Destructable
   - 
   - 
   - 

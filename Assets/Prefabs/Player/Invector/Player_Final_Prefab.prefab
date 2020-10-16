@@ -3025,7 +3025,7 @@ SkinnedMeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -4869,7 +4869,7 @@ GameObject:
   - component: {fileID: 1864421765}
   - component: {fileID: 2987122526758564572}
   - component: {fileID: 7545867076116324151}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player_Final_Prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5745,7 +5745,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 341b7347bcce2fc4cb9af0e86c8aec29, type: 3}
   - {fileID: 8300000, guid: 31607b52453f93043903f5672c3e29b1, type: 3}
   - {fileID: 8300000, guid: 4e04479e076dabe40b93b13f4213d478, type: 3}
-  maxWaterLevel: 3
 --- !u!114 &7545867076116324151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7762,12 +7761,12 @@ PrefabInstance:
     - target: {fileID: 6775737077560251027, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6775737077560251027, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6812804150893875223, guid: 798ff87eff5874f22b22665f33f478f9,
         type: 3}
