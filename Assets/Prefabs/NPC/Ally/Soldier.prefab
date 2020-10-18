@@ -3959,7 +3959,7 @@ MonoBehaviour:
   _currentHealth: 0
   isImmortal: 0
   fillHealthOnStart: 1
-  maxHealth: 100
+  maxHealth: 120
   healthRecovery: 0
   healthRecoveryDelay: 0
   currentHealthRecoveryDelay: 0
@@ -4019,27 +4019,26 @@ MonoBehaviour:
   sphereSensor: {fileID: 5729305666247606675}
   tagsToDetect:
     tags:
-    - Player
     - Enemy
   layersToDetect:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 512
   obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   sortTargetFromDistance: 1
-  fieldOfView: 135
+  fieldOfView: 185
   maxDetectDistance: 15
-  minDetectDistance: 5
-  distanceToLostTarget: 10
-  chaseStopDistance: 0
+  minDetectDistance: 2
+  distanceToLostTarget: 0
+  chaseStopDistance: 5
   drawAgentPath: 1
   displayGizmos: 1
   passiveToDamage: 0
   agressiveAtFirstSight: 1
   attackRotationSpeed: 0.5
   firstAttackDelay: 0
-  minTimeToAttack: 4
+  minTimeToAttack: 1
   maxTimeToAttack: 6
   maxAttackCount: 3
   randomAttackCount: 1
@@ -4203,7 +4202,7 @@ MonoBehaviour:
   onEquipWeapon:
     m_PersistentCalls:
       m_Calls: []
-  defaultAttackDistance: 1
+  defaultAttackDistance: 1.5
   defaultStaminaCost: 20
   defaultStaminaRecoveryDelay: 1
   defaultDefenseRate: 50
