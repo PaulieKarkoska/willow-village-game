@@ -38,6 +38,7 @@ TagManager:
   - Upgrade
   - Store
   - Destructible
+  - AmbientMusic
   layers:
   - Default
   - TransparentFX
