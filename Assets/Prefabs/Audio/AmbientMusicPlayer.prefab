@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6230666890501133335}
   - component: {fileID: 1158063320020354775}
+  - component: {fileID: 1280151999277484382}
   m_Layer: 0
   m_Name: AmbientMusicPlayer
   m_TagString: Untagged
@@ -127,3 +128,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1280151999277484382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621440433540109035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be9f0ed35eb74e4ba7530a16ac83055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

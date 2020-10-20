@@ -1,61 +1,51 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
     [Header("Panels")]
+    public GameObject interactionPanel;
+    [Space(10)]
     public GameObject menuPanel;
     public GameObject newGamePanel;
     public GameObject settingsPanel;
+    [Header("Loading")]
+    public GameObject loadingPanel;
+    public Slider loadingSlider;
+    public TextMeshProUGUI loadingText;
 
     [Header("Menu Buttons")]
     public Button NewGameButton;
-    //public Button ContinueButton;
     public Button SettingsButton;
     public Button ExitButton;
 
-    //[Header("New Game Buttons")]
-    //public Button NewGame_YesButton;
-    //public Button NewGame_NoButton;
+    private AsyncOperation operation;
 
     private void Start()
     {
         newGamePanel.SetActive(false);
         settingsPanel.SetActive(false);
-
-        //if (SaveManager.HasSave)
-        // Disable Continue Button
     }
 
     public void NewGame()
     {
-        //if (SavaManager.HasSave)
-        if (false)
+        interactionPanel.SetActive(false);
+        StartCoroutine(BeginLoad(1));
+    }
+    private IEnumerator BeginLoad(int sceneIndex)
+    {
+        loadingPanel.SetActive(true);
+        operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        while (!operation.isDone)
         {
-            TogglePanel(newGamePanel, true);
+            loadingSlider.value = operation.progress;
+            loadingText.text = $"Loading... {(int)(operation.progress * 100f) + 10}%";
+            yield return null;
         }
-        else
-        {
-            //SaveManager.ClearCurrentSave();
-            SceneManager.LoadScene(1);
-        }
-    }
-
-    public void NewGameYes()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void NewGameNo()
-    {
-        TogglePanel(newGamePanel, false);
-    }
-
-    public void Continue()
-    {
-        Debug.Log("continue pressed");
-
     }
 
     public void Settings()
@@ -71,14 +61,12 @@ public class MainMenuController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-
     }
 
     private void TogglePanel(GameObject panel, bool active)
     {
         panel.SetActive(active);
         NewGameButton.interactable = !active;
-        //ContinueButton.interactable = !active;
         SettingsButton.interactable = !active;
         ExitButton.interactable = !active;
     }
