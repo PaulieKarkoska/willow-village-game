@@ -22,10 +22,14 @@ public class MainMenuController : MonoBehaviour
     public Button SettingsButton;
     public Button ExitButton;
 
+    [Header("Cursor")]
+    public Texture2D cursorSprite;
+
     private AsyncOperation operation;
 
     private void Start()
     {
+        Cursor.SetCursor(cursorSprite, new Vector2(cursorSprite.width * 0.35f, cursorSprite.height * 0.2f), CursorMode.ForceSoftware);
         newGamePanel.SetActive(false);
         settingsPanel.SetActive(false);
     }
@@ -37,13 +41,15 @@ public class MainMenuController : MonoBehaviour
     }
     private IEnumerator BeginLoad(int sceneIndex)
     {
+        Camera.main.GetComponent<Animator>().Play("MainMenuCameraAnim");
+
         loadingPanel.SetActive(true);
         operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         while (!operation.isDone)
         {
             loadingSlider.value = operation.progress;
-            loadingText.text = $"Loading... {(int)(operation.progress * 100f) + 10}%";
+            loadingText.text = $"Loading... {((int)(operation.progress * 100f)) + 10}%";
             yield return null;
         }
     }
