@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothBetweenState: 6
-  smoothCameraRotation: 15
+  smoothCameraRotation: 50
   scrollSpeed: 10
   cullingLayer:
     serializedVersion: 2
