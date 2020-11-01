@@ -64,6 +64,7 @@ public class NpcSpawner : MonoBehaviour
     {
         var bandit = Instantiate(npcPrefab, transform.position, Quaternion.identity);
         var enemy = bandit.GetComponent<v_AIController>();
+        enemy.onDead.AddListener(g => npcList.Remove(g.gameObject));
         enemy.pathArea = waypointArea;
 
         npcList.Add(bandit);

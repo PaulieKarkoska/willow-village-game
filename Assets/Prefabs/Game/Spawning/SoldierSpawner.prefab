@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a517450e8ce3654ab735f91d7b381c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierPrefab: {fileID: 8095796314527970396, guid: ba772bfbcdff97546b5638f71de7031f,
+  npcPrefab: {fileID: 1274652561483435617, guid: f6f2ae56b415d2345a0584a6714f4282,
     type: 3}
+  waypointArea: {fileID: 0}
+  allyOrEnemy: 0
+  testMode: 0
 --- !u!1001 &7254445849242845970
 PrefabInstance:
   m_ObjectHideFlags: 0

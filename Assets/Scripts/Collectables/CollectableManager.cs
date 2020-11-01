@@ -84,6 +84,8 @@ public class CollectableManager : MonoBehaviour
         totalMoney += moneyToAdd;
         return totalMoney;
     }
+
+    /// <returns>The remaining amount of money</returns>
     public int RemoveMoney(int moneyToRemove)
     {
         totalMoney -= moneyToRemove;

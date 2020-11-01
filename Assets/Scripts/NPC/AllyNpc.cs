@@ -8,11 +8,9 @@ public class AllyNpc : MonoBehaviour
     [SerializeField]
     private GameObject[] weaponObjects;
 
-    static System.Random rand = new System.Random();
-
     private void Start()
     {
-        var weaponIndex = rand.Next(weaponObjects.Length);
+        var weaponIndex = Random.Range(0, weaponObjects.Length);
         var weapon = weaponObjects[weaponIndex];
         weapon.SetActive(true);
         GetComponent<vMeleeManager>().SetRightWeapon(weapon);
