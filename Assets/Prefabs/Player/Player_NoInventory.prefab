@@ -2289,7 +2289,7 @@ MonoBehaviour:
     lastTimeTheButtonWasPressed: 0
     inButtomTimer: 0
   crouchInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: LeftControl
     keyboardAxis: 0
@@ -2671,7 +2671,7 @@ MonoBehaviour:
     lastTimeTheButtonWasPressed: 0
     inButtomTimer: 0
   nexTargetInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: X
     keyboardAxis: 0
@@ -2686,7 +2686,7 @@ MonoBehaviour:
     lastTimeTheButtonWasPressed: 0
     inButtomTimer: 0
   previousTargetInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Z
     keyboardAxis: 0
