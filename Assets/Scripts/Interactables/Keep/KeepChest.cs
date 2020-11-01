@@ -1,12 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class KeepChest : MonoBehaviour, IInteractable
 {
     private CollectableManager _inventory;
-    public int totalChestMoney { get; private set; }
+    public static int totalChestMoney { get; private set; }
+    public delegate void GoldUpdated(string goldText);
+    public static event GoldUpdated OnGoldUpdated;
+
+    public bool HasEnoughMoney(int cost)
+    {
+        return totalChestMoney >= cost;
+    }
+
+    public static int RemoveMoney(int cost)
+    {
+        totalChestMoney -= cost;
+        OnGoldUpdated(totalChestMoney.ToString("#,##0"));
+        return totalChestMoney;
+    }
 
     void Start()
     {
@@ -48,7 +60,7 @@ public class KeepChest : MonoBehaviour, IInteractable
         totalChestMoney += add;
         _inventory.RemoveMoney(_inventory.totalMoney);
 
-        Debug.Log($"Total chest money is now {totalChestMoney}");
+        OnGoldUpdated?.Invoke(totalChestMoney.ToString("#,##0"));
     }
 
     public void intermediateInteract(GameObject player)

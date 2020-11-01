@@ -46,9 +46,10 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7145404504518764675, guid: 8159f6bf1e471ca48a34eccdbc4296a7, type: 3}
   _emitOnStart: 1
+  _startEmissionDelay: 0
   _positionJitter: {x: 1, y: 0, z: 1}
   _isContinuous: 1
-  _continuousEmissionsPerSecond: 180
+  _continuousEmissionsPerSecond: 120
   _continuousEmissionJitter: 30
 --- !u!1 &2387049828279307287
 GameObject:
@@ -130,9 +131,10 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7145404504518764675, guid: 8159f6bf1e471ca48a34eccdbc4296a7, type: 3}
   _emitOnStart: 0
+  _startEmissionDelay: 0
   _positionJitter: {x: 1, y: 0, z: 1}
   _isContinuous: 1
-  _continuousEmissionsPerSecond: 180
+  _continuousEmissionsPerSecond: 120
   _continuousEmissionJitter: 30
 --- !u!1 &8369719074202812720
 GameObject:
@@ -180,9 +182,10 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7145404504518764675, guid: 8159f6bf1e471ca48a34eccdbc4296a7, type: 3}
   _emitOnStart: 0
+  _startEmissionDelay: 0
   _positionJitter: {x: 1, y: 0, z: 1}
   _isContinuous: 1
-  _continuousEmissionsPerSecond: 180
+  _continuousEmissionsPerSecond: 120
   _continuousEmissionJitter: 30
 --- !u!1001 &4545654505206993571
 PrefabInstance:
