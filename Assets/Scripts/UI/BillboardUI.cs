@@ -6,7 +6,7 @@ public class BillboardUI : MonoBehaviour
 
     private void Start()
     {
-        m_Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        m_Camera = Camera.main;
     }
 
     //Orient the camera after all movement is completed this frame to avoid jittering

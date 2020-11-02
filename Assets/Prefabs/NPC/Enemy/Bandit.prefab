@@ -971,7 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 5
+  selectedToolbar: 4
   _isDead: 0
   _currentHealth: 0
   isImmortal: 0
@@ -1050,9 +1050,10 @@ MonoBehaviour:
     tags:
     - Player
     - CompanionAI
+    - Destructible
   layersToDetect:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 1049856
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -1237,6 +1238,7 @@ MonoBehaviour:
     hitDamageTags:
     - Player
     - CompanionAI
+    - Descrutible
     useRecoil: 1
     drawRecoilGizmos: 0
     recoilRange: 90
