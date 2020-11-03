@@ -49,7 +49,7 @@ MonoBehaviour:
   waypointArea: {fileID: 0}
   spawnDelay: 2
   maxConcurrent: 10
-  testMode: 1
+  testMode: 0
 --- !u!1001 &7254445849242845970
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -457,7 +457,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9034554411663641996
 MonoBehaviour:
@@ -613,7 +613,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.098967105, y: 0.831558, z: -0.020469107}
+  m_ConnectedAnchor: {x: -0.09896686, y: 0.831558, z: -0.020471185}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -904,7 +904,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9039274221388369706}
   - component: {fileID: 8948869878648537002}
-  - component: {fileID: 9034554412414523959}
   - component: {fileID: 9034554412414523958}
   - component: {fileID: 9034554412414523953}
   - component: {fileID: 9034554412414523952}
@@ -912,7 +911,8 @@ GameObject:
   - component: {fileID: 1275871831825296842}
   - component: {fileID: 2384912670192999995}
   - component: {fileID: 8517107313649673279}
-  - component: {fileID: 1939788992887317941}
+  - component: {fileID: 4419840862142192233}
+  - component: {fileID: 8475035461799914754}
   m_Layer: 9
   m_Name: Bandit
   m_TagString: Enemy
@@ -957,154 +957,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9034554412414523959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9035378965266037528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed68e2fa3a670145a76a285dc78d116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openCloseEvents: 0
-  openCloseWindow: 1
-  selectedToolbar: 4
-  _isDead: 0
-  _currentHealth: 0
-  isImmortal: 0
-  fillHealthOnStart: 1
-  maxHealth: 100
-  healthRecovery: 0
-  healthRecoveryDelay: 0
-  currentHealthRecoveryDelay: 0
-  checkHealthEvents: []
-  _onReceiveDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  _onDead:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1939788992887317941}
-        m_TargetAssemblyTypeName: ShrinkAndDisappear, Assembly-CSharp
-        m_MethodName: StartToShrink
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onChangeHealth:
-    m_PersistentCalls:
-      m_Calls: []
-  onResetHealth:
-    m_PersistentCalls:
-      m_Calls: []
-  deathBy: 2
-  removeComponentsAfterDie: 0
-  debugActionListener: 0
-  OnCrouch:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStandUp:
-    m_PersistentCalls:
-      m_Calls: []
-  _onActiveRagdoll:
-    m_PersistentCalls:
-      m_Calls: []
-  onActionEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onActionStay:
-    m_PersistentCalls:
-      m_Calls: []
-  onActionExit:
-    m_PersistentCalls:
-      m_Calls: []
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  groundCheckDistance: 0.5
-  autoCrouchLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  headDetect: 0.95
-  patrolSpeed: 1
-  wanderSpeed: 1
-  chaseSpeed: 1
-  strafeSpeed: 1
-  strafeSideways: 1
-  strafeBackward: 1
-  strafeDistance: 3
-  minStrafeSwape: 2
-  maxStrafeSwape: 5
-  strafeRotationSpeed: 5
-  currentState: 2
-  sphereSensor: {fileID: 9034554411663641996}
-  tagsToDetect:
-    tags:
-    - Player
-    - CompanionAI
-    - Destructible
-  layersToDetect:
-    serializedVersion: 2
-    m_Bits: 1049856
-  obstaclesLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  sortTargetFromDistance: 1
-  fieldOfView: 95
-  maxDetectDistance: 5
-  minDetectDistance: 2
-  distanceToLostTarget: 5
-  chaseStopDistance: 1
-  drawAgentPath: 1
-  displayGizmos: 0
-  passiveToDamage: 0
-  agressiveAtFirstSight: 1
-  attackRotationSpeed: 0.5
-  firstAttackDelay: 0
-  minTimeToAttack: 4
-  maxTimeToAttack: 6
-  maxAttackCount: 3
-  randomAttackCount: 1
-  chanceToRoll: 0
-  chanceToBlockInStrafe: 0.1
-  chanceToBlockAttack: 0
-  raiseShield: 4
-  lowerShield: 2
-  distanceToChangeWaypoint: 1
-  patrollingStopDistance: 0.5
-  patrolWithoutAreaStyle: 0
-  pathArea: {fileID: 0}
-  randomWaypoints: 0
-  _capsuleCollider: {fileID: 0}
-  healthSlider: {fileID: 0}
-  meleeManager: {fileID: 0}
-  lockMovement: 0
-  currentTarget:
-    transform: {fileID: 0}
-    colliderTarget: {fileID: 0}
-  canSeeTarget: 0
-  actions: 0
-  stateRoutineIteration: 0.15
-  destinationRoutineIteration: 0.25
-  findTargetIteration: 0.25
-  smoothSpeed: 5
-  onIdle:
-    m_PersistentCalls:
-      m_Calls: []
-  onChase:
-    m_PersistentCalls:
-      m_Calls: []
-  onPatrol:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &9034554412414523958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1309,7 +1161,7 @@ MonoBehaviour:
   - Ignore Ragdoll
   horizontalMultiplier: 1
   verticalMultiplier: 0.5
---- !u!114 &1939788992887317941
+--- !u!114 &4419840862142192233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1318,11 +1170,159 @@ MonoBehaviour:
   m_GameObject: {fileID: 9035378965266037528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a65171877957114681f709d7c14d9ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ed68e2fa3a670145a76a285dc78d116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 90
-  shrinkTime: 0.1
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 3
+  _isDead: 0
+  _currentHealth: 0
+  isImmortal: 0
+  fillHealthOnStart: 1
+  maxHealth: 120
+  healthRecovery: 0
+  healthRecoveryDelay: 0
+  currentHealthRecoveryDelay: 0
+  checkHealthEvents: []
+  _onReceiveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8475035461799914754}
+        m_TargetAssemblyTypeName: DestroyAfterTime, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChangeHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  onResetHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  deathBy: 2
+  removeComponentsAfterDie: 0
+  debugActionListener: 0
+  OnCrouch:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStandUp:
+    m_PersistentCalls:
+      m_Calls: []
+  _onActiveRagdoll:
+    m_PersistentCalls:
+      m_Calls: []
+  onActionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onActionStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onActionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckDistance: 0.5
+  autoCrouchLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  headDetect: 0.95
+  patrolSpeed: 1
+  wanderSpeed: 1
+  chaseSpeed: 1
+  strafeSpeed: 1
+  strafeSideways: 1
+  strafeBackward: 1
+  strafeDistance: 3
+  minStrafeSwape: 2
+  maxStrafeSwape: 5
+  strafeRotationSpeed: 5
+  currentState: 2
+  sphereSensor: {fileID: 9034554411663641996}
+  tagsToDetect:
+    tags:
+    - Player
+    - CompanionAI
+    - Destructible
+  layersToDetect:
+    serializedVersion: 2
+    m_Bits: 1050112
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  sortTargetFromDistance: 1
+  fieldOfView: 140
+  maxDetectDistance: 10
+  minDetectDistance: 2
+  distanceToLostTarget: 5
+  chaseStopDistance: 1
+  drawAgentPath: 1
+  displayGizmos: 1
+  passiveToDamage: 0
+  agressiveAtFirstSight: 1
+  attackRotationSpeed: 0.5
+  firstAttackDelay: 0
+  minTimeToAttack: 4
+  maxTimeToAttack: 6
+  maxAttackCount: 3
+  randomAttackCount: 1
+  chanceToRoll: 0
+  chanceToBlockInStrafe: 0.1
+  chanceToBlockAttack: 0
+  raiseShield: 4
+  lowerShield: 2
+  distanceToChangeWaypoint: 1
+  patrollingStopDistance: 0.5
+  patrolWithoutAreaStyle: 0
+  pathArea: {fileID: 0}
+  randomWaypoints: 0
+  _capsuleCollider: {fileID: 0}
+  healthSlider: {fileID: 0}
+  meleeManager: {fileID: 0}
+  lockMovement: 0
+  currentTarget:
+    transform: {fileID: 0}
+    colliderTarget: {fileID: 0}
+  canSeeTarget: 0
+  actions: 0
+  stateRoutineIteration: 0.15
+  destinationRoutineIteration: 0.25
+  findTargetIteration: 0.25
+  smoothSpeed: 5
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onChase:
+    m_PersistentCalls:
+      m_Calls: []
+  onPatrol:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8475035461799914754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035378965266037528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aed8fc7cf37bd8468a614caf1172a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 15
+  startImmediately: 0
 --- !u!1 &9035397995610796514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1543,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.39930925, y: -0.00000037252903, z: 0.000000044703484}
+  m_ConnectedAnchor: {x: 0.39930922, y: -0.00000010058284, z: -0.0000018626451}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1686,7 +1686,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23371828, y: -0.007856667, z: 0.19098923}
+  m_ConnectedAnchor: {x: -0.23371823, y: -0.007855922, z: 0.19098994}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1921,7 +1921,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.5440478e-16, y: 1.1603295, z: -0.006508477}
+  m_ConnectedAnchor: {x: 0.0000005280599, y: 1.1603295, z: -0.0065102484}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2445,7 +2445,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23371544, y: -0.007857084, z: -0.190989}
+  m_ConnectedAnchor: {x: -0.23371543, y: -0.007856391, z: -0.19098976}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2650,7 +2650,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.40415397, y: 0.061365962, z: 1.8590616e-15}
+  m_ConnectedAnchor: {x: -0.4041537, y: 0.061366983, z: 0.0000009066425}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3007,7 +3007,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09896705, y: 0.8315581, z: -0.02046907}
+  m_ConnectedAnchor: {x: 0.098967366, y: 0.8315581, z: -0.020469442}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -3323,7 +3323,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.39930925, y: -0.000000007450581, z: -0.000000037252903}
+  m_ConnectedAnchor: {x: -0.39930928, y: 0.00000067055225, z: 0.00000063329935}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -3546,7 +3546,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.33947408, y: -0.0014489875, z: -0.0014362633}
+  m_ConnectedAnchor: {x: -0.33947414, y: -0.0014489647, z: -0.0014371742}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -3771,7 +3771,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.33947468, y: 0.0014475491, z: 0.001436267}
+  m_ConnectedAnchor: {x: 0.3394751, y: 0.0014475207, z: 0.0014342666}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:

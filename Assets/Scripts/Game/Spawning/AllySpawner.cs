@@ -55,7 +55,7 @@ public class AllySpawner : NpcSpawner
     private void SpawnAlly()
     {
         var bandit = Instantiate(npcPrefab, transform.position, Quaternion.identity);
-        var enemy = bandit.GetComponent<v_AICompanion>();
+        var enemy = bandit.GetComponent<v_AIController>();
         enemy.onDead.AddListener(g =>
         {
             alliesSpawned--;
