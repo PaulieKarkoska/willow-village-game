@@ -39,4 +39,9 @@ public class TreeOfLife : MonoBehaviour
         healthController.maxHealth = (int)value;
         healthController.ResetHealth();
     }
+
+    public void OnNodeReceiveDamage(vDamage damage)
+    {
+        healthController.TakeDamage(damage);
+    }
 }

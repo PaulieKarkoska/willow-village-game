@@ -2646,7 +2646,7 @@ MonoBehaviour:
     m_Bits: 1
   screenMarginX: 0.8
   screenMarginY: 0.1
-  range: 10
+  range: 5
   showDebug: 0
   timeToChangeTarget: 0.25
   strafeWhileLockOn: 1
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   aimImageSize: {x: 100, y: 100}
   hideSprite: 1
   spriteHeight: 0.5
-  cameraHeightOffset: 0
+  cameraHeightOffset: 0.25
   lockOnInput:
     useInput: 1
     isAxisInUse: 0

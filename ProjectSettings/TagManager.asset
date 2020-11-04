@@ -39,6 +39,7 @@ TagManager:
   - Store
   - Destructible
   - AmbientMusic
+  - NoRecoil
   layers:
   - Default
   - TransparentFX
