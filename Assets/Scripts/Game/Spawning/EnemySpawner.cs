@@ -23,23 +23,13 @@ public class EnemySpawner : NpcSpawner
     public static int routedEnemyCount { get; private set; }
     public static int enemiesSpawned { get; private set; }
 
-    private int concurrentCount = 0;
+    public static int concurrentCount { get; private set; } = 0;
 
     public static WaveInfo WaveInfo { get; set; }
-
-    [Header("Testing")]
-    [SerializeField]
-    private bool testMode;
-
-    private void Start()
+    public void StartSpawning()
     {
-        if (testMode)
-            StartSpawning(30);
-    }
-
-    public void StartSpawning(int enemiesPerWave)
-    {
-        waveEnemyCount = enemiesPerWave;
+        wController.waveIsInProgress = true;
+        waveEnemyCount = WaveInfo.waveEnemyCount;
         routedEnemyCount = 0;
         concurrentCount = 0;
 
@@ -69,7 +59,11 @@ public class EnemySpawner : NpcSpawner
             concurrentCount--;
             OnEnemyKilled?.Invoke(routedEnemyCount, waveEnemyCount);
             if (routedEnemyCount == WaveInfo.waveEnemyCount)
+            {
                 OnAllEnemiesKilled?.Invoke();
+                wController.waveIsInProgress = false;
+                wController.StartWaveCountdown();
+            }
 
         });
         concurrentCount++;

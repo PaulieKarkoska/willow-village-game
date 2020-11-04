@@ -12,38 +12,35 @@ public class AllySpawner : NpcSpawner
     public delegate void AllyKilled(int alliesRemaining);
     public static event AllyKilled OnAllyKilled;
 
-    //[Header("Testing")]
-    //[SerializeField]
-    //private bool testMode;
+    [SerializeField]
+    private KeepChest keepChest;
+
+    public int costPerSoldier { get; set; } = 15;
 
     private void Start()
     {
-    //{
-    //    if (testMode)
-    //        StartSpawning();
+        wController = GameObject.Find("WaveController").GetComponent<WaveController>();
+        if (!keepChest)
+            GameObject.Find("Keep Chest").GetComponent<KeepChest>();
     }
 
-    //public void StartSpawning()
-    //{
-    //    StartCoroutine(SpawnLoop());
-
-    //    isSpawning = true;
-    //}
-    //public void StopSpawning()
-    //{
-    //    if (isSpawning)
-    //        StopCoroutine(SpawnLoop());
-
-    //    isSpawning = false;
-    //}
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnLoop());
+    }
 
     private IEnumerator SpawnLoop()
     {
         while (true)
         {
             yield return new WaitForSeconds(1);
-            if (alliesSpawned < maxConcurrent)
+            if (wController.waveIsInProgress
+                && alliesSpawned < maxConcurrent
+                && keepChest.HasEnoughMoney(costPerSoldier))
+            {
+                keepChest.RemoveMoney(costPerSoldier);
                 SpawnAlly();
+            }
             yield return new WaitForSeconds(spawnDelay - 1);
         }
     }

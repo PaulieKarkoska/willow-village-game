@@ -1,12 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Component which will flicker a linked light while active by changing its
-/// intensity between the min and max values given. The flickering can be
-/// sharp or smoothed depending on the value of the smoothing parameter.
-///
-/// Just activate / deactivate this component as usual to pause / resume flicker
-/// </summary>
+
 public class FlickeringLight : MonoBehaviour
 {
     [Tooltip("External light to flicker; you can leave this null if you attach script to a light")]
@@ -19,36 +13,29 @@ public class FlickeringLight : MonoBehaviour
     [Range(1, 50)]
     public int smoothing = 5;
 
-    // Continuous average calculation via FIFO queue
-    // Saves us iterating every time we update, we just change by the delta
-    Queue<float> smoothQueue;
-    float lastSum = 0;
+    private Queue<float> smoothQueue;
+    private float lastSum = 0;
 
-    void Start()
+    private void Start()
     {
         smoothQueue = new Queue<float>(smoothing);
-        // External or internal light?
         if (light == null)
         {
             light = GetComponent<Light>();
         }
     }
 
-    void Update()
+    private void Update()
     {
-        // pop off an item if too big
         while (smoothQueue.Count >= smoothing)
         {
             lastSum -= smoothQueue.Dequeue();
         }
 
-        // Generate random new item, calculate new average
         float newVal = Random.Range(minIntensity, maxIntensity);
         smoothQueue.Enqueue(newVal);
         lastSum += newVal;
 
-        // Calculate new smoothed average
         light.intensity = lastSum / (float)smoothQueue.Count;
     }
-
 }

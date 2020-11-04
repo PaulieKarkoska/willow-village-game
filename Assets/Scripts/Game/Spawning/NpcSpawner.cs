@@ -8,7 +8,9 @@ public abstract class NpcSpawner : MonoBehaviour
     [SerializeField]
     protected vWaypointArea waypointArea;
     [SerializeField]
-    protected float spawnDelay;
+    protected float spawnDelay = 2;
     [SerializeField]
     protected int maxConcurrent;
+    [SerializeField]
+    protected WaveController wController;
 }

@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KeepChest : MonoBehaviour, IInteractable
 {
@@ -13,7 +12,7 @@ public class KeepChest : MonoBehaviour, IInteractable
         return totalChestMoney >= cost;
     }
 
-    public static int RemoveMoney(int cost)
+    public int RemoveMoney(int cost)
     {
         totalChestMoney -= cost;
         OnGoldUpdated(totalChestMoney.ToString("#,##0"));

@@ -11,6 +11,7 @@ public class WaveController : MonoBehaviour
 
     public float nextWaveTimeRemaining { get; private set; } = 0;
     public bool timerIsCountingDown { get; private set; } = false;
+    public bool waveIsInProgress { get; set; } = false;
 
     public Dictionary<int, WaveInfo> Waves { get; private set; }
 
@@ -20,8 +21,17 @@ public class WaveController : MonoBehaviour
     public delegate void WaveUpdated(int currentWave);
     public static event WaveUpdated OnWaveUpdated;
 
+    public delegate void WaveStarted(int currentWave);
+    public static event WaveStarted OnWaveStarted;
+
+    private EnemySpawner eSpawn;
+    private AllySpawner aSpawn;
+
     private void Start()
     {
+        eSpawn = GameObject.Find("BanditSpawner").GetComponent<EnemySpawner>();
+        aSpawn = GameObject.Find("SoldierSpawner").GetComponent<AllySpawner>();
+
         var xmlText = Resources.Load("WaveInfo") as TextAsset;
         var xdoc = XDocument.Parse(xmlText.text);
         var waveList = xdoc.XPathSelectElements("/root/Waves/*").Select(x =>
@@ -57,9 +67,12 @@ public class WaveController : MonoBehaviour
 
         currentWave++;
         OnWaveUpdated?.Invoke(currentWave);
-        
+
         EnemySpawner.WaveInfo = Waves[currentWave];
         nextWaveTimeRemaining = EnemySpawner.WaveInfo.waitTimeAfter;
+        eSpawn.StartSpawning();
+        if (currentWave == 1)
+            aSpawn.StartSpawning();
     }
 
     public void StartWaveCountdown()

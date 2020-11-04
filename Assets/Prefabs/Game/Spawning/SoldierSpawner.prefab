@@ -49,7 +49,8 @@ MonoBehaviour:
   waypointArea: {fileID: 0}
   spawnDelay: 2
   maxConcurrent: 10
-  testMode: 0
+  wController: {fileID: 0}
+  keepChest: {fileID: 0}
 --- !u!1001 &7254445849242845970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1758445602361864, guid: 23f033a45399e9b4ea239f5375d90fd8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4362936708694704, guid: 23f033a45399e9b4ea239f5375d90fd8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -107,6 +108,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362936708694704, guid: 23f033a45399e9b4ea239f5375d90fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64801457101541526, guid: 23f033a45399e9b4ea239f5375d90fd8,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
