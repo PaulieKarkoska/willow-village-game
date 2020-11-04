@@ -16,15 +16,16 @@ public class EnemySpawner : NpcSpawner
     public delegate void AllEnemiesKilled();
     public static event AllEnemiesKilled OnAllEnemiesKilled;
 
+    public delegate void SpawningCompleted();
+    public static event SpawningCompleted OnSpawningCompleted;
+
     public static int waveEnemyCount { get; private set; }
     public static int routedEnemyCount { get; private set; }
     public static int enemiesSpawned { get; private set; }
 
-    [SerializeField]
-    private int spawnDelay = 30;
-    [SerializeField]
-    private int maxConcurrent = 10;
     private int concurrentCount = 0;
+
+    public static WaveInfo WaveInfo { get; set; }
 
     [Header("Testing")]
     [SerializeField]
@@ -41,14 +42,13 @@ public class EnemySpawner : NpcSpawner
         waveEnemyCount = enemiesPerWave;
         routedEnemyCount = 0;
         concurrentCount = 0;
-        OnSpawningStarted?.Invoke();
 
         StartCoroutine(SpawnLoop());
-        isSpawning = true;
     }
 
     private IEnumerator SpawnLoop()
     {
+        OnSpawningStarted?.Invoke();
         while (waveEnemyCount > enemiesSpawned)
         {
             yield return new WaitForSeconds(1);
@@ -56,6 +56,7 @@ public class EnemySpawner : NpcSpawner
                 SpawnEnemy();
             yield return new WaitForSeconds(spawnDelay - 1);
         }
+        OnSpawningCompleted?.Invoke();
     }
 
     private void SpawnEnemy()
@@ -67,8 +68,12 @@ public class EnemySpawner : NpcSpawner
             routedEnemyCount++;
             concurrentCount--;
             OnEnemyKilled?.Invoke(routedEnemyCount, waveEnemyCount);
+            if (routedEnemyCount == WaveInfo.waveEnemyCount)
+                OnAllEnemiesKilled?.Invoke();
+
         });
         concurrentCount++;
+        OnEnemySpawned?.Invoke();
         enemiesSpawned++;
 
         enemy.pathArea = waypointArea;

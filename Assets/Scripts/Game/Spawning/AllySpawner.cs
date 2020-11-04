@@ -12,34 +12,30 @@ public class AllySpawner : NpcSpawner
     public delegate void AllyKilled(int alliesRemaining);
     public static event AllyKilled OnAllyKilled;
 
-    [SerializeField]
-    private int spawnDelay = 30;
-    [SerializeField]
-    private int maxConcurrent = 10;
-
-    [Header("Testing")]
-    [SerializeField]
-    private bool testMode;
+    //[Header("Testing")]
+    //[SerializeField]
+    //private bool testMode;
 
     private void Start()
     {
-        if (testMode)
-            StartSpawning();
+    //{
+    //    if (testMode)
+    //        StartSpawning();
     }
 
-    public void StartSpawning()
-    {
-        StartCoroutine(SpawnLoop());
+    //public void StartSpawning()
+    //{
+    //    StartCoroutine(SpawnLoop());
 
-        isSpawning = true;
-    }
-    public void StopSpawning()
-    {
-        if (isSpawning)
-            StopCoroutine(SpawnLoop());
+    //    isSpawning = true;
+    //}
+    //public void StopSpawning()
+    //{
+    //    if (isSpawning)
+    //        StopCoroutine(SpawnLoop());
 
-        isSpawning = false;
-    }
+    //    isSpawning = false;
+    //}
 
     private IEnumerator SpawnLoop()
     {

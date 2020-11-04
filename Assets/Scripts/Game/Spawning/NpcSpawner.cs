@@ -1,5 +1,4 @@
 ﻿using Invector.vCharacterController.AI;
-using System.Collections;
 using UnityEngine;
 
 public abstract class NpcSpawner : MonoBehaviour
@@ -8,6 +7,8 @@ public abstract class NpcSpawner : MonoBehaviour
     protected GameObject npcPrefab;
     [SerializeField]
     protected vWaypointArea waypointArea;
-
-    public bool isSpawning { get; protected set; }
+    [SerializeField]
+    protected float spawnDelay;
+    [SerializeField]
+    protected int maxConcurrent;
 }
