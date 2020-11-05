@@ -70,6 +70,9 @@ public class WaveController : MonoBehaviour
 
         EnemySpawner.WaveInfo = Waves[currentWave];
         nextWaveTimeRemaining = EnemySpawner.WaveInfo.waitTimeAfter;
+
+        OnWaveStarted?.Invoke(currentWave);
+
         eSpawn.StartSpawning();
         if (currentWave == 1)
             aSpawn.StartSpawning();

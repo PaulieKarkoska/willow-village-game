@@ -30,6 +30,7 @@ public class EnemySpawner : NpcSpawner
     {
         wController.waveIsInProgress = true;
         waveEnemyCount = WaveInfo.waveEnemyCount;
+        enemiesSpawned = 0;
         routedEnemyCount = 0;
         concurrentCount = 0;
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   npcPrefab: {fileID: 9035378965266037528, guid: 0abcd85ca6d0b304d985b8192efe663c,
     type: 3}
   waypointArea: {fileID: 0}
-  spawnDelay: 2
+  spawnDelay: 3.5
   maxConcurrent: 10
   wController: {fileID: 0}
 --- !u!1001 &6598810197448217401
