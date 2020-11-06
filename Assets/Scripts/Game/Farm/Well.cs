@@ -2,6 +2,9 @@
 
 public class Well : MonoBehaviour, IInteractable
 {
+    public delegate void WaterCollected(GameObject well);
+    public static event WaterCollected OnWaterCollected;
+
     [Header("Farming")]
     [SerializeField]
     private GameObject _water;
@@ -30,6 +33,7 @@ public class Well : MonoBehaviour, IInteractable
     {
         player.GetComponent<CollectableManager>().RefillWaterLevel();
 
+        OnWaterCollected?.Invoke(gameObject);
         AudioSource.PlayClipAtPoint(_waterAudioClips[Random.Range(0, _waterAudioClips.Length)], transform.position);
     }
 

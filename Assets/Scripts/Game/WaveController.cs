@@ -78,8 +78,11 @@ public class WaveController : MonoBehaviour
             aSpawn.StartSpawning();
     }
 
-    public void StartWaveCountdown()
+    public void StartWaveCountdown(float? countdownOverride = null)
     {
+        if (countdownOverride != null)
+            nextWaveTimeRemaining = (float)countdownOverride;
+
         timerIsCountingDown = true;
     }
 }

@@ -3,63 +3,63 @@
   <Waves>
     <Wave number="1">
       <enemiesPerWave>3</enemiesPerWave>
-      <waitTimeAfter>30</waitTimeAfter>
+      <waitTimeAfter>45</waitTimeAfter>
     </Wave>
     <Wave number="2">
       <enemiesPerWave>5</enemiesPerWave>
-      <waitTimeAfter>35</waitTimeAfter>
+      <waitTimeAfter>60</waitTimeAfter>
     </Wave>
     <Wave number="3">
       <enemiesPerWave>7</enemiesPerWave>
-      <waitTimeAfter>40</waitTimeAfter>
+      <waitTimeAfter>75</waitTimeAfter>
     </Wave>
     <Wave number="4">
-      <enemiesPerWave>10</enemiesPerWave>
-      <waitTimeAfter>45</waitTimeAfter>
+      <enemiesPerWave>9</enemiesPerWave>
+      <waitTimeAfter>75</waitTimeAfter>
     </Wave>
     <Wave number="5">
-      <enemiesPerWave>15</enemiesPerWave>
-      <waitTimeAfter>50</waitTimeAfter>
+      <enemiesPerWave>11</enemiesPerWave>
+      <waitTimeAfter>75</waitTimeAfter>
     </Wave>
     <Wave number="6">
-      <enemiesPerWave>20</enemiesPerWave>
-      <waitTimeAfter>55</waitTimeAfter>
+      <enemiesPerWave>13</enemiesPerWave>
+      <waitTimeAfter>90</waitTimeAfter>
     </Wave>
     <Wave number="7">
-      <enemiesPerWave>25</enemiesPerWave>
-      <waitTimeAfter>60</waitTimeAfter>
+      <enemiesPerWave>15</enemiesPerWave>
+      <waitTimeAfter>90</waitTimeAfter>
     </Wave>
     <Wave number="8">
-      <enemiesPerWave>30</enemiesPerWave>
-      <waitTimeAfter>70</waitTimeAfter>
+      <enemiesPerWave>20</enemiesPerWave>
+      <waitTimeAfter>90</waitTimeAfter>
     </Wave>
     <Wave number="9">
-      <enemiesPerWave>38</enemiesPerWave>
-      <waitTimeAfter>80</waitTimeAfter>
+      <enemiesPerWave>25</enemiesPerWave>
+      <waitTimeAfter>90</waitTimeAfter>
     </Wave>
     <Wave number="10">
-      <enemiesPerWave>50</enemiesPerWave>
+      <enemiesPerWave>30</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
     </Wave>
     <Wave number="11">
-      <enemiesPerWave>60</enemiesPerWave>
-      <waitTimeAfter>100</waitTimeAfter>
+      <enemiesPerWave>35</enemiesPerWave>
+      <waitTimeAfter>120</waitTimeAfter>
     </Wave>
     <Wave number="12">
-      <enemiesPerWave>75</enemiesPerWave>
+      <enemiesPerWave>40</enemiesPerWave>
       <waitTimeAfter>120</waitTimeAfter>
     </Wave>
     <Wave number="13">
-      <enemiesPerWave>85</enemiesPerWave>
-      <waitTimeAfter>150</waitTimeAfter>
+      <enemiesPerWave>45</enemiesPerWave>
+      <waitTimeAfter>120</waitTimeAfter>
     </Wave>
     <Wave number="14">
-      <enemiesPerWave>100</enemiesPerWave>
+      <enemiesPerWave>50</enemiesPerWave>
       <waitTimeAfter>180</waitTimeAfter>
     </Wave>
     <Wave number="15">
-      <enemiesPerWave>125</enemiesPerWave>
-      <waitTimeAfter>300</waitTimeAfter>
+      <enemiesPerWave>75</enemiesPerWave>
+      <waitTimeAfter>0</waitTimeAfter>
     </Wave>
   </Waves>
 </root>

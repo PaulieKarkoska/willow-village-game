@@ -38,28 +38,28 @@ public class Crop : MonoBehaviour, IInteractable
     [SerializeField]
     private Vector3 originalPlantScale = new Vector3(0.15f, 0.15f, 0.15f);
     [SerializeField]
-    private float timeToHarvest = 120f;
+    private float timeToHarvest;
     private float remainingHarvestTime;
     [SerializeField]
-    private float waterInterval = 60;
+    private float waterInterval;
     private float remainingWaterTime;
     [SerializeField]
-    private float maxRotTime = 180f;
+    private float maxRotTime;
     private float currentRotTime;
 
     [Header("Rewards")]
     [SerializeField]
-    private static int minCoinReward = 1;
+    private static int minCoinReward = 2;
     public static int GetMinCoinReward() => minCoinReward;
     [SerializeField]
     private static int maxCoinReward = 3;
     public static int GetMaxCoinReward() => maxCoinReward;
     [Space(height: 10f)]
     [SerializeField]
-    private static int minSeedReward = 1;
+    private static int minSeedReward = 2;
     public static int GetMinSeedReward() => minSeedReward;
     [SerializeField]
-    private static int maxSeedReward = 2;
+    private static int maxSeedReward = 3;
     public static int GetMaxSeedReward() => maxSeedReward;
 
     public bool isPlanted
@@ -112,12 +112,14 @@ public class Crop : MonoBehaviour, IInteractable
                 remainingHarvestTime -= Time.deltaTime;
                 remainingWaterTime -= Time.deltaTime;
                 if (remainingWaterTime <= 0f)
+                {
                     state = CropState.NeedsWater;
+                }
                 else
                 {
                     plantMeshGameObject.transform.localScale = Vector3.Lerp(originalPlantScale, Vector3.one, 1 - (remainingHarvestTime / timeToHarvest));
-
                     remainingHarvestTime -= Time.deltaTime;
+                    Debug.Log("remainingHarvestTime: " + remainingHarvestTime);
                     if (remainingHarvestTime <= 0)
                         state = CropState.Complete;
                 }

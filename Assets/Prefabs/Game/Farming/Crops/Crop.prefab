@@ -178,7 +178,6 @@ MonoBehaviour:
   invalidMaterial: {fileID: 2100000, guid: 65bd638049e39964ba2e19065469887c, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 71e41e43b459a244abaf5acca76b89ee, type: 2}
   deadMaterial: {fileID: 2100000, guid: 77ee790680b7866418c68d22063cef50, type: 2}
-  harvestRemoveClip: {fileID: 0}
   waterClip: {fileID: 8300000, guid: ac8f06fc880dcdb4a8e7c305488a73b5, type: 3}
   harvestRemoveClips:
   - {fileID: 8300000, guid: b73d41f4e61593e449636dad0b1fe156, type: 3}
@@ -193,9 +192,9 @@ MonoBehaviour:
   harvestIcon: {fileID: 21300000, guid: 1716fe5714417499ebe34ce5d04a7d62, type: 3}
   plantMeshGameObject: {fileID: 5593188464009673333}
   originalPlantScale: {x: 0.15, y: 0.15, z: 0.15}
-  timeToHarvest: 120
-  waterInterval: 60
-  maxRotTime: 180
+  timeToHarvest: 45
+  waterInterval: 30
+  maxRotTime: 30
 --- !u!135 &7174813046893348537
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -240,6 +239,12 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2677003141771745327, guid: 3c2735b2dfb56a74e9a399fc39487243, type: 3}
   - {fileID: 7145404504518764675, guid: 8159f6bf1e471ca48a34eccdbc4296a7, type: 3}
+  _emitOnStart: 0
+  _startEmissionDelay: 0
+  _positionJitter: {x: 0, y: 0, z: 0}
+  _isContinuous: 0
+  _continuousEmissionsPerSecond: 1
+  _continuousEmissionJitter: 0
 --- !u!1 &4986154120393893255
 GameObject:
   m_ObjectHideFlags: 0

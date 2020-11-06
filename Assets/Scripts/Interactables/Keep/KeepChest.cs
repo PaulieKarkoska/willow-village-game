@@ -15,7 +15,7 @@ public class KeepChest : MonoBehaviour, IInteractable
     public int RemoveMoney(int cost)
     {
         totalChestMoney -= cost;
-        OnGoldUpdated(totalChestMoney.ToString("#,##0"));
+        OnGoldUpdated?.Invoke(totalChestMoney.ToString("#,##0"));
         return totalChestMoney;
     }
 
