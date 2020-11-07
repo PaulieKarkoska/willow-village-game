@@ -109,7 +109,6 @@ public class Crop : MonoBehaviour, IInteractable
         switch (state)
         {
             case CropState.Planted:
-                remainingHarvestTime -= Time.deltaTime;
                 remainingWaterTime -= Time.deltaTime;
                 if (remainingWaterTime <= 0f)
                 {

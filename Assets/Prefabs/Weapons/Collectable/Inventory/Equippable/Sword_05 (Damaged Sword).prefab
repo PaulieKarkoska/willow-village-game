@@ -80,7 +80,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   meleeManager: {fileID: 0}
-  meleeType: 1
+  meleeType: 2
   useStrongAttack: 0
   distanceToAttack: 1
   attackID: 1

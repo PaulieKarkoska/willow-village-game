@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70e7208b9395894ebde6ff34172cd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantingDistance: 1.5
   _cropPrefab: {fileID: 4595096118284860304, guid: 22a967d0dadad8347add46e4dd19abd6,
     type: 3}
 --- !u!65 &3548010614376047288
@@ -170,7 +169,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.049313545, y: 0.20943451, z: 6.418743}
+  m_Size: {x: 0.27895278, y: 0.20943451, z: 6.869034}
   m_Center: {x: 0, y: 0.1330862, z: 0}
 --- !u!1001 &7789959080806730709
 PrefabInstance:

@@ -21,6 +21,9 @@ public class WaveController : MonoBehaviour
     public delegate void WaveUpdated(int currentWave);
     public static event WaveUpdated OnWaveUpdated;
 
+    public delegate void CountdownStarted();
+    public static event CountdownStarted OnCountdownStarted;
+
     public delegate void WaveStarted(int currentWave);
     public static event WaveStarted OnWaveStarted;
 
@@ -84,6 +87,7 @@ public class WaveController : MonoBehaviour
             nextWaveTimeRemaining = (float)countdownOverride;
 
         timerIsCountingDown = true;
+        OnCountdownStarted?.Invoke();
     }
 }
 

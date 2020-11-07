@@ -192,9 +192,9 @@ MonoBehaviour:
   harvestIcon: {fileID: 21300000, guid: 1716fe5714417499ebe34ce5d04a7d62, type: 3}
   plantMeshGameObject: {fileID: 5593188464009673333}
   originalPlantScale: {x: 0.15, y: 0.15, z: 0.15}
-  timeToHarvest: 45
-  waterInterval: 30
-  maxRotTime: 30
+  timeToHarvest: 30
+  waterInterval: 20
+  maxRotTime: 60
 --- !u!135 &7174813046893348537
 SphereCollider:
   m_ObjectHideFlags: 0
