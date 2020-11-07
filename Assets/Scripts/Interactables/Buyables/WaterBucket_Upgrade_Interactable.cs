@@ -45,7 +45,7 @@ public class WaterBucket_Upgrade_Interactable : BuyableUpgrade, IInteractable
 
     public string getInteractionText(GameObject player)
     {
-        return $"Buy level {currentLevel + 1} {upgradeName}";
+        return $"Buy level {currentLevel} {upgradeName}";
     }
 
     public void interact(GameObject player)

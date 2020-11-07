@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class WaveController : MonoBehaviour
 {
+    public static WaveController instance { get; private set; }
+
     public int currentWave { get; private set; } = 0;
     public const int maxWave = 15;
 
@@ -32,6 +34,7 @@ public class WaveController : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         eSpawn = GameObject.Find("BanditSpawner").GetComponent<EnemySpawner>();
         aSpawn = GameObject.Find("SoldierSpawner").GetComponent<AllySpawner>();
 
@@ -40,7 +43,9 @@ public class WaveController : MonoBehaviour
         var waveList = xdoc.XPathSelectElements("/root/Waves/*").Select(x =>
             new WaveInfo(int.Parse(x.Attribute("number").Value),
                          int.Parse(x.Element("enemiesPerWave").Value),
-                         int.Parse(x.Element("waitTimeAfter").Value)));
+                         int.Parse(x.Element("waitTimeAfter").Value),
+                         bool.Parse(x.Element("enemiesHaveWeapon").Value),
+                         bool.Parse(x.Element("enemiesHaveShield").Value)));
         Waves = waveList.ToDictionary(w => w.number, w => w);
         OnTimerUpdated?.Invoke(null);
     }
@@ -93,15 +98,19 @@ public class WaveController : MonoBehaviour
 
 public class WaveInfo
 {
-    public WaveInfo(int num, int enemies, float subsequentRoundDelay)
+    public WaveInfo(int num, int enemies, float subsequentRoundDelay, bool weapon, bool shield)
     {
         number = num;
         waveEnemyCount = enemies;
         waitTimeAfter = subsequentRoundDelay;
+        enemiesHaveWeapon = weapon;
+        enemiesHaveShield = shield;
     }
 
     public WaveInfo() { }
 
+    public bool enemiesHaveWeapon { get; set; }
+    public bool enemiesHaveShield { get; set; }
     public int number { get; set; }
     public int waveEnemyCount { get; set; }
     public float waitTimeAfter { get; set; }

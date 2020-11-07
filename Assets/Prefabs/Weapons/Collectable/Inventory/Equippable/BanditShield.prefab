@@ -1,0 +1,239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7080749287722782732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7080749287722782733}
+  m_Layer: 2
+  m_Name: Components
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7080749287722782733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080749287722782732}
+  m_LocalRotation: {x: -0.28677353, y: -0.6509118, z: -0.69241476, w: -0.12098144}
+  m_LocalPosition: {x: -0.075, y: 0.049, z: -0.085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7083142893619934375}
+  m_Father: {fileID: 7080749288843027369}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7080749288843027374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7080749288843027369}
+  - component: {fileID: 7080749288843027368}
+  - component: {fileID: 7080749288843027375}
+  m_Layer: 2
+  m_Name: BanditShield
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7080749288843027369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080749288843027374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7080749287722782733}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7080749288843027368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080749288843027374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebe2ea9c9ea0544d84d9c27f7470915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 0
+  selectedToolbar: 0
+  damage:
+    damageValue: 0
+    staminaBlockCost: 0
+    staminaRecoveryDelay: 0
+    ignoreDefense: 0
+    activeRagdoll: 0
+    senselessTime: 0
+    sender: {fileID: 0}
+    receiver: {fileID: 0}
+    hitPosition: {x: 0, y: 0, z: 0}
+    hitReaction: 1
+    recoil_id: 0
+    reaction_id: 0
+    damageType: 
+  overrideDamageSender: {fileID: 0}
+  hitBoxes: []
+  damageModifier: 0
+  canApplyDamage: 0
+  onDamageHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecoilHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  meleeManager: {fileID: 0}
+  meleeType: 0
+  useStrongAttack: 1
+  distanceToAttack: 1
+  attackID: 0
+  movesetID: 0
+  staminaCost: 0
+  staminaRecoveryDelay: 0
+  defenseRate: 100
+  defenseRange: 60
+  defenseID: 3
+  recoilID: 2
+  breakAttack: 1
+  onDefense:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7080749288843027375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080749288843027374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cc2b820c1fe174082aa779f79cb540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 0
+  selectedToolbar: 0
+  audioSource: {fileID: 106114, guid: dfea19d1d34dd174d87195f78cb44ae7, type: 3}
+  hitSounds: []
+  recoilSounds:
+  - {fileID: 8300000, guid: f0dad368bc2d5944ca75a821ad024ce2, type: 3}
+  - {fileID: 8300000, guid: 3bc8b33abc1b51d4badb229b61e36e33, type: 3}
+  - {fileID: 8300000, guid: bfa1063bd08a3d54595a731677875059, type: 3}
+  recoilParticles:
+  - {fileID: 110090, guid: 04dd09560119f3c48ba23669eb660db1, type: 3}
+  defSounds:
+  - {fileID: 8300000, guid: f0dad368bc2d5944ca75a821ad024ce2, type: 3}
+  - {fileID: 8300000, guid: 3bc8b33abc1b51d4badb229b61e36e33, type: 3}
+  - {fileID: 8300000, guid: bfa1063bd08a3d54595a731677875059, type: 3}
+--- !u!1001 &7080749288528916113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7080749287722782733}
+    m_Modifications:
+    - target: {fileID: 1617533053552260, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_Name
+      value: SM_Wep_Shield_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23273126643190704, guid: 3e5b956849e5aea44bd2455cd53102b5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64182345862819812, guid: 3e5b956849e5aea44bd2455cd53102b5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e5b956849e5aea44bd2455cd53102b5, type: 3}
+--- !u!4 &7083142893619934375 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4432240453999158, guid: 3e5b956849e5aea44bd2455cd53102b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7080749288528916113}
+  m_PrefabAsset: {fileID: 0}

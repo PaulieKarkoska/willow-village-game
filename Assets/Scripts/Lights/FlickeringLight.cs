@@ -27,15 +27,19 @@ public class FlickeringLight : MonoBehaviour
 
     private void Update()
     {
-        while (smoothQueue.Count >= smoothing)
+        try
         {
-            lastSum -= smoothQueue.Dequeue();
+            while (smoothQueue.Count >= smoothing)
+            {
+                lastSum -= smoothQueue.Dequeue();
+            }
+
+            float newVal = Random.Range(minIntensity, maxIntensity);
+            smoothQueue.Enqueue(newVal);
+            lastSum += newVal;
+
+            light.intensity = lastSum / (float)smoothQueue.Count;
         }
-
-        float newVal = Random.Range(minIntensity, maxIntensity);
-        smoothQueue.Enqueue(newVal);
-        lastSum += newVal;
-
-        light.intensity = lastSum / (float)smoothQueue.Count;
+        catch { }
     }
 }

@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public class Fertilizer_Upgrade_Interactable : BuyableUpgrade, IInteractable
+public class Soldier_Upgrade_Interactable : BuyableUpgrade, IInteractable
 {
     [SerializeField]
-    private int originalCostOverride = 55;
+    private int originalCostOverride = 45;
+    [SerializeField]
+    private int originalMaxLevelOverride = 3;
     private void Awake()
     {
         originalMoneyCost = originalCostOverride;
         currentMoneyCost = originalMoneyCost;
+        maxLevel = originalMaxLevelOverride;
     }
 
     public bool supportsIntermediateInteraction { get; set; } = false;
 
     public KeyCode interactionKey { get; set; } = KeyCode.E;
 
-    public override string upgradeName { get; set; } = "Harvest Reward Upgrade";
+    public override string upgradeName { get; set; } = "Soldier Armor Upgrade";
 
     public bool canInteract(GameObject player)
     {
@@ -50,7 +53,7 @@ public class Fertilizer_Upgrade_Interactable : BuyableUpgrade, IInteractable
 
     public void interact(GameObject player)
     {
-        Crop.UpgradeHarvestReward();
+        AllySpawner.UpgradeArmor();
 
         base.Buy(player.GetComponent<CollectableManager>());
     }

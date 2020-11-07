@@ -31,7 +31,7 @@ public abstract class BuyableUpgrade : MonoBehaviour
 
     public bool GetCanUpgrade()
     {
-        return currentLevel < maxLevel;
+        return currentLevel <= maxLevel;
     }
 
     public void Buy(CollectableManager playerInventory)

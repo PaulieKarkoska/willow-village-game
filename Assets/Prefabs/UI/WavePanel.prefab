@@ -215,6 +215,7 @@ MonoBehaviour:
   waveNumberText: {fileID: 7843381078544589763}
   timer: {fileID: 7528190225620151180}
   countdownText: {fileID: 7942507896719019984}
+  newWaveClip: {fileID: 8300000, guid: 0ee117d0b7777634596d5629216e822b, type: 3}
 --- !u!1 &4014842957971482511
 GameObject:
   m_ObjectHideFlags: 0

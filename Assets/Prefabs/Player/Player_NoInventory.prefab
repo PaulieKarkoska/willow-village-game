@@ -1984,6 +1984,7 @@ GameObject:
   - component: {fileID: 6096041522810932981}
   - component: {fileID: 8233914329603064625}
   - component: {fileID: 3713384236594835162}
+  - component: {fileID: 8273158594610813595}
   m_Layer: 8
   m_Name: Player_NoInventory
   m_TagString: Player
@@ -2743,6 +2744,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17222c77e242d6a4998ab4a5ce199365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8273158594610813595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849473767157003816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a67ea875e5f1f409d797a5db7be587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  hideWeaponsAutomatically: 1
+  hideWeaponsTimer: 8
+  lockInventoryInputOnLock: 0
+  isLocked: 0
+  hideAndDrawWeaponsInput:
+    useInput: 0
+    isAxisInUse: 0
+    keyboard: H
+    keyboardAxis: 0
+    joystick: LB
+    joystickAxis: 0
+    mobile: LB
+    mobileAxis: 0
+    joystickAxisInvert: 0
+    keyboardAxisInvert: 0
+    mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
+  weaponsHided: 0
+  previouslyWeaponsHided: 0
 --- !u!1 &3849476179172045334
 GameObject:
   m_ObjectHideFlags: 0

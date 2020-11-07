@@ -4,62 +4,92 @@
     <Wave number="1">
       <enemiesPerWave>3</enemiesPerWave>
       <waitTimeAfter>45</waitTimeAfter>
+      <enemiesHaveWeapon>false</enemiesHaveWeapon>
+      <enemiesHaveShield>false</enemiesHaveShield>
     </Wave>
     <Wave number="2">
       <enemiesPerWave>5</enemiesPerWave>
       <waitTimeAfter>60</waitTimeAfter>
+      <enemiesHaveWeapon>false</enemiesHaveWeapon>
+      <enemiesHaveShield>false</enemiesHaveShield>
     </Wave>
     <Wave number="3">
       <enemiesPerWave>7</enemiesPerWave>
       <waitTimeAfter>75</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>false</enemiesHaveShield>
     </Wave>
     <Wave number="4">
       <enemiesPerWave>9</enemiesPerWave>
       <waitTimeAfter>75</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>false</enemiesHaveShield>
     </Wave>
     <Wave number="5">
       <enemiesPerWave>11</enemiesPerWave>
       <waitTimeAfter>75</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>false</enemiesHaveShield>
     </Wave>
     <Wave number="6">
       <enemiesPerWave>13</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="7">
       <enemiesPerWave>15</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="8">
       <enemiesPerWave>20</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="9">
       <enemiesPerWave>25</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="10">
       <enemiesPerWave>30</enemiesPerWave>
       <waitTimeAfter>90</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="11">
       <enemiesPerWave>35</enemiesPerWave>
       <waitTimeAfter>120</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="12">
       <enemiesPerWave>40</enemiesPerWave>
       <waitTimeAfter>120</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="13">
       <enemiesPerWave>45</enemiesPerWave>
       <waitTimeAfter>120</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="14">
       <enemiesPerWave>50</enemiesPerWave>
       <waitTimeAfter>180</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
     <Wave number="15">
       <enemiesPerWave>75</enemiesPerWave>
       <waitTimeAfter>0</waitTimeAfter>
+      <enemiesHaveWeapon>true</enemiesHaveWeapon>
+      <enemiesHaveShield>true</enemiesHaveShield>
     </Wave>
   </Waves>
 </root>

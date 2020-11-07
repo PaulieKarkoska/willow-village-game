@@ -15,8 +15,14 @@ public class WaveBadge : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI countdownText;
 
+    [SerializeField]
+    private AudioClip newWaveClip;
+
+    private Transform player;
+
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         wController = GameObject.Find("WaveController").GetComponent<WaveController>();
         WaveController.OnTimerUpdated += WaveController_OnTimerUpdated;
         WaveController.OnWaveStarted += WaveController_OnWaveStarted;
@@ -48,12 +54,14 @@ public class WaveBadge : MonoBehaviour
     private IEnumerator WaveEnd()
     {
         //Bounce badge into frame
-        LeanTween.moveY(badge, 0, 1.5f).setEaseOutBounce(); ;
+        LeanTween.moveY(timer, 0, 1.5f).setEaseOutBounce(); ;
         yield return new WaitForSeconds(1.5f);
     }
 
     private IEnumerator WaveStart()
     {
+        //Play new wave sound
+        SfxPlayer.instance.Play(newWaveClip);
         //Expo timer out of scene
         LeanTween.moveY(timer, 200, 1).setEaseInExpo();
         yield return new WaitForSeconds(1);
@@ -61,6 +69,7 @@ public class WaveBadge : MonoBehaviour
         //Bounce badge into frame
         LeanTween.moveY(badge, 0, 1).setEaseOutBounce();
         yield return new WaitForSeconds(3);
+        
         //Expo badge out of frame
         LeanTween.moveY(badge, 375, 1).setEaseOutExpo();
     }

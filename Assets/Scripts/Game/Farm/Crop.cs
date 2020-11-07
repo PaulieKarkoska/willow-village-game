@@ -118,7 +118,6 @@ public class Crop : MonoBehaviour, IInteractable
                 {
                     plantMeshGameObject.transform.localScale = Vector3.Lerp(originalPlantScale, Vector3.one, 1 - (remainingHarvestTime / timeToHarvest));
                     remainingHarvestTime -= Time.deltaTime;
-                    Debug.Log("remainingHarvestTime: " + remainingHarvestTime);
                     if (remainingHarvestTime <= 0)
                         state = CropState.Complete;
                 }

@@ -11,6 +11,12 @@ public class AllyNpc : MonoBehaviour
     [SerializeField]
     private Vector3 weaponPosition;
 
+    [Header("Skins")]
+    [SerializeField]
+    private GameObject[] skins;
+    [SerializeField]
+    private GameObject helmet;
+
     [SerializeField]
     private Transform rightHand;
     [SerializeField]
@@ -18,9 +24,12 @@ public class AllyNpc : MonoBehaviour
 
     private void Start()
     {
-        var weaponIndex = Random.Range(0, weaponObjects.Length);
-        var weapon = weaponObjects[weaponIndex];
-        weapon.SetActive(true);
+        var weaponIndex = AllySpawner.weaponLevel;
+        //var weaponIndex = Random.Range(0, weaponObjects.Length);
+        var weapon = Instantiate(weaponObjects[weaponIndex], rightHand, true);
+        weapon.transform.position = weaponPosition;
+        weapon.transform.rotation = weaponRotation;
+
         GetComponent<vMeleeManager>().SetRightWeapon(weapon);
 
         SetSkin();
@@ -28,16 +37,12 @@ public class AllyNpc : MonoBehaviour
 
     private void SetSkin()
     {
-        var chosenSkin = Random.Range(1, 2);
-        if (chosenSkin == 1)
-        {
-            transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetChild(2).gameObject.SetActive(false);
-        }
-        else
-        {
-            transform.GetChild(1).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(true);
-        }
+        foreach (var skin in skins)
+            skin.SetActive(false);
+
+        skins[Random.Range(0, 1)].SetActive(true);
+
+        if (AllySpawner.armorLevel >= 2)
+            helmet.SetActive(true);
     }
 }

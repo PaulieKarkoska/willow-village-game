@@ -12,6 +12,14 @@ public class AllySpawner : NpcSpawner
     public delegate void AllyKilled(int alliesRemaining);
     public static event AllyKilled OnAllyKilled;
 
+    public static int weaponLevel = 0;
+    public static int armorLevel = 0;
+
+    public static void UpgradeArmor()
+    {
+        armorLevel++;
+    }
+
     [SerializeField]
     private KeepChest keepChest;
 
