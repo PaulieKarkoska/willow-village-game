@@ -3,6 +3,7 @@
 public class DestroyAfterTime : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Use a negative number to never destroy")]
     private float delayTime = 120f;
     [SerializeField]
     private bool startImmediately = false;
@@ -11,11 +12,12 @@ public class DestroyAfterTime : MonoBehaviour
 
     void Start()
     {
-        if (startImmediately)
-        {
-            _countingDown = true;
-            Destroy(gameObject, delayTime);
-        }
+        if (delayTime > 0)
+            if (startImmediately)
+            {
+                _countingDown = true;
+                Destroy(gameObject, delayTime);
+            }
     }
 
     public void DestroyObject(GameObject obj)

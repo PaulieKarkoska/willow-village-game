@@ -27,7 +27,7 @@ public class FlickeringLight : MonoBehaviour
 
     private void Update()
     {
-        try
+        if (Time.timeScale > 0)
         {
             while (smoothQueue.Count >= smoothing)
             {
@@ -40,6 +40,5 @@ public class FlickeringLight : MonoBehaviour
 
             light.intensity = lastSum / (float)smoothQueue.Count;
         }
-        catch { }
     }
 }
