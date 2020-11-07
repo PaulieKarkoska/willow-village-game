@@ -67,7 +67,7 @@ public class WaveBadge : MonoBehaviour
         yield return new WaitForSeconds(1);
         
         //Bounce badge into frame
-        LeanTween.moveY(badge, 0, 1).setEaseOutBounce();
+        LeanTween.moveY(badge, -40, 1).setEaseOutBounce();
         yield return new WaitForSeconds(3);
         
         //Expo badge out of frame

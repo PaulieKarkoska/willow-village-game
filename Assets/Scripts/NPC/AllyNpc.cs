@@ -40,7 +40,7 @@ public class AllyNpc : MonoBehaviour
         foreach (var skin in skins)
             skin.SetActive(false);
 
-        skins[Random.Range(0, 1)].SetActive(true);
+        skins[Random.Range(0, 2)].SetActive(true);
 
         if (AllySpawner.armorLevel >= 2)
             helmet.SetActive(true);

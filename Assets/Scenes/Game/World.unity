@@ -5413,6 +5413,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 175184219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &176205982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4545120984015796665, guid: eaeb860f4b9697e43ac976d42d194c8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4545654505734545570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &176205984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176205982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a00599ade275d3488f34ae9e78a51a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &180264068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77209,6 +77227,11 @@ PrefabInstance:
     - target: {fileID: 8369719074202812720, guid: eaeb860f4b9697e43ac976d42d194c8e,
         type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677356321202015117, guid: eaeb860f4b9697e43ac976d42d194c8e,
+        type: 3}
+      propertyPath: selectedToolbar
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9213924144081500166, guid: eaeb860f4b9697e43ac976d42d194c8e,
