@@ -1,5 +1,8 @@
-﻿using TMPro;
+﻿using Invector.vCharacterController;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +19,26 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI waterLevelText;
     public TextMeshProUGUI interactionText;
 
+    [Header("Victory")]
+    [SerializeField]
+    private RectTransform victoryPanel;
+    [SerializeField]
+    private Button victoryRestartButton;
+    [SerializeField]
+    private Button victoryQuitButton;
+    [SerializeField]
+    private AudioClip victoryClip;
+
+    [Header("Defeat")]
+    [SerializeField]
+    private RectTransform defeatPanel;
+    [SerializeField]
+    private Button defeatRestartButton;
+    [SerializeField]
+    private Button defeatQuitButton;
+    [SerializeField]
+    private AudioClip defeatClip;
+
     private Vector2 cursorHotspot;
 
     [Header("Pause Menu")]
@@ -23,6 +46,7 @@ public class UIManager : MonoBehaviour
     private GameObject pausePanel;
 
     private bool isPaused = false;
+    private bool gameIsOver = false;
 
     private void Awake()
     {
@@ -31,9 +55,49 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    private void Start()
+    {
+        defeatRestartButton.onClick.AddListener(() => SceneManager.LoadScene(1));
+        defeatQuitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
+
+        victoryRestartButton.onClick.AddListener(() => SceneManager.LoadScene(1));
+        victoryQuitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
+
+        TreeOfLife.OnTreeKilled += TreeOfLife_OnTreeKilled;
+        WaveController.OnLastWaveCompleted += WaveController_OnLastWaveCompleted;
+    }
+
+    private void WaveController_OnLastWaveCompleted()
+    {
+        gameIsOver = true;
+
+        victoryPanel.gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<vMeleeCombatInput>().enabled = false;
+        LeanTween.moveY(victoryPanel, 250, 2).setEaseOutCirc();
+
+        SfxPlayer.instance.Play(victoryClip);
+        Cursor.SetCursor(cursorSprite, cursorHotspot, CursorMode.ForceSoftware);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    private void TreeOfLife_OnTreeKilled()
+    {
+        gameIsOver = true;
+
+        defeatPanel.gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<vMeleeCombatInput>().enabled = false;
+        SfxPlayer.instance.Play(defeatClip);
+        LeanTween.moveY(defeatPanel, 250, 2).setEaseOutExpo();
+
+        Cursor.SetCursor(cursorSprite, cursorHotspot, CursorMode.ForceSoftware);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameIsOver)
         {
             TogglePauseMenu();
         }
@@ -65,7 +129,7 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            
+
             Time.timeScale = 1;
         }
         else
@@ -74,7 +138,7 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(true);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-            
+
             Time.timeScale = 0;
         }
         isPaused = !isPaused;

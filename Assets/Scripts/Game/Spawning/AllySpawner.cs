@@ -55,15 +55,19 @@ public class AllySpawner : NpcSpawner
 
     private void SpawnAlly()
     {
-        var bandit = Instantiate(npcPrefab, transform.position, Quaternion.identity);
-        var enemy = bandit.GetComponent<v_AIController>();
-        enemy.onDead.AddListener(g =>
+        var soldier = Instantiate(npcPrefab, transform.position, Quaternion.identity);
+        var ally = soldier.GetComponent<v_AIController>();
+        ally.onDead.AddListener(g =>
         {
             alliesSpawned--;
             OnAllyKilled?.Invoke(alliesSpawned);
         });
+        ally.chanceToBlockAttack = 0.15f + (armorLevel * 0.1f);
+        ally.ChangeMaxHealth((armorLevel * 50));
+        ally.ResetHealth();
+
         alliesSpawned++;
         OnAllySpawned?.Invoke(alliesSpawned);
-        enemy.pathArea = waypointArea;
+        ally.pathArea = waypointArea;
     }
 }

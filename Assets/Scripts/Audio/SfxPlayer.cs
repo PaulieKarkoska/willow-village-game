@@ -11,9 +11,12 @@ public class SfxPlayer : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void Play(AudioClip clip)
+    public void Play(AudioClip clip, bool cancelCurrent = false)
     {
-        source.clip = clip;
-        source.Play();
+        if (!source.isPlaying || cancelCurrent)
+        {
+            source.clip = clip;
+            source.Play();
+        }
     }
 }

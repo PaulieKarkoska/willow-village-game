@@ -24,13 +24,17 @@ public class AllyNpc : MonoBehaviour
 
     private void Start()
     {
-        var weaponIndex = AllySpawner.weaponLevel;
-        //var weaponIndex = Random.Range(0, weaponObjects.Length);
-        var weapon = Instantiate(weaponObjects[weaponIndex], rightHand, true);
-        weapon.transform.position = weaponPosition;
-        weapon.transform.rotation = weaponRotation;
 
-        GetComponent<vMeleeManager>().SetRightWeapon(weapon);
+        if (false)
+        {
+            var weaponIndex = AllySpawner.weaponLevel;
+            //var weaponIndex = Random.Range(0, weaponObjects.Length);
+            var weapon = Instantiate(weaponObjects[weaponIndex], rightHand, true);
+            weapon.transform.position = weaponPosition;
+            weapon.transform.rotation = weaponRotation;
+
+            GetComponent<vMeleeManager>().SetRightWeapon(weapon);
+        }
 
         SetSkin();
     }

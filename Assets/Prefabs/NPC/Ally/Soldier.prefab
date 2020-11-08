@@ -411,9 +411,9 @@ MonoBehaviour:
   _currentHealth: 0
   isImmortal: 0
   fillHealthOnStart: 1
-  maxHealth: 120
-  healthRecovery: 2
-  healthRecoveryDelay: 1000
+  maxHealth: 250
+  healthRecovery: 0.5
+  healthRecoveryDelay: 100
   currentHealthRecoveryDelay: 0
   checkHealthEvents: []
   _onReceiveDamage:
@@ -508,14 +508,14 @@ MonoBehaviour:
   randomAttackCount: 1
   chanceToRoll: 0
   chanceToBlockInStrafe: 0.1
-  chanceToBlockAttack: 0
+  chanceToBlockAttack: 0.15
   raiseShield: 4
-  lowerShield: 2
+  lowerShield: 0
   distanceToChangeWaypoint: 1
   patrollingStopDistance: 0.5
   patrolWithoutAreaStyle: 0
   pathArea: {fileID: 0}
-  randomWaypoints: 0
+  randomWaypoints: 1
   _capsuleCollider: {fileID: 0}
   healthSlider: {fileID: 0}
   meleeManager: {fileID: 0}
@@ -1579,7 +1579,7 @@ SkinnedMeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class TreeOfLife : MonoBehaviour
 {
+    public delegate void TreeKilled();
+    public static event TreeKilled OnTreeKilled;
+
     [SerializeField]
     private Slider healthSlider;
     [SerializeField]
@@ -43,5 +46,7 @@ public class TreeOfLife : MonoBehaviour
     public void OnNodeReceiveDamage(vDamage damage)
     {
         healthController.TakeDamage(damage);
+        if (healthController.currentHealth <= 0)
+            OnTreeKilled?.Invoke();
     }
 }

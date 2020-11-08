@@ -96,7 +96,5 @@ public class Tutorial : MonoBehaviour
         }
         if (wController.currentWave == 0 && !wController.waveIsInProgress)
             wController.StartWaveCountdown(30);
-
-        Destroy(gameObject, 1);
     }
 }

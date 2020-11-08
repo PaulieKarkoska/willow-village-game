@@ -37,7 +37,8 @@ public class WaveBadge : MonoBehaviour
 
     private void EnemySpawner_OnAllEnemiesKilled()
     {
-        StartCoroutine(WaveEnd());
+        if (wController.currentWave <= WaveController.maxWave)
+            StartCoroutine(WaveEnd());
     }
 
     private void WaveController_OnWaveStarted(int currentWave)
@@ -54,7 +55,7 @@ public class WaveBadge : MonoBehaviour
     private IEnumerator WaveEnd()
     {
         //Bounce badge into frame
-        LeanTween.moveY(timer, 0, 1.5f).setEaseOutBounce(); ;
+        LeanTween.moveY(timer, -40, 1.5f).setEaseOutBounce(); ;
         yield return new WaitForSeconds(1.5f);
     }
 

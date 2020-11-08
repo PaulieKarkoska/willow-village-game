@@ -37,9 +37,9 @@ TagManager:
   - Well
   - Upgrade
   - Store
-  - Destructible
   - AmbientMusic
   - NoRecoil
+  - Destructable
   layers:
   - Default
   - TransparentFX

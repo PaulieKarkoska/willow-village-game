@@ -18,6 +18,7 @@ public class EnemyNpc : MonoBehaviour
             if (!wave.enemiesHaveWeapon)
             {
                 meleeManager.rightWeapon = null;
+                weapon.transform.parent = null;
                 Destroy(weapon);
             }
             else
@@ -26,6 +27,7 @@ public class EnemyNpc : MonoBehaviour
             if (!wave.enemiesHaveShield)
             {
                 meleeManager.leftWeapon = null;
+                shield.transform.parent = null;
                 Destroy(shield);
             }
             else

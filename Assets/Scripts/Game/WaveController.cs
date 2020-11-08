@@ -9,13 +9,16 @@ public class WaveController : MonoBehaviour
     public static WaveController instance { get; private set; }
 
     public int currentWave { get; private set; } = 0;
-    public const int maxWave = 15;
+    public const int maxWave = 14;
 
     public float nextWaveTimeRemaining { get; private set; } = 0;
     public bool timerIsCountingDown { get; private set; } = false;
     public bool waveIsInProgress { get; set; } = false;
 
     public Dictionary<int, WaveInfo> Waves { get; private set; }
+
+    public delegate void LastWaveCompleted();
+    public static event LastWaveCompleted OnLastWaveCompleted;
 
     public delegate void TimerUpdated(float? time);
     public static event TimerUpdated OnTimerUpdated;
@@ -91,8 +94,15 @@ public class WaveController : MonoBehaviour
         if (countdownOverride != null)
             nextWaveTimeRemaining = (float)countdownOverride;
 
-        timerIsCountingDown = true;
-        OnCountdownStarted?.Invoke();
+        if (currentWave <= maxWave)
+        {
+            timerIsCountingDown = true;
+            OnCountdownStarted?.Invoke();
+        }
+        else
+        {
+            OnLastWaveCompleted?.Invoke();
+        }
     }
 }
 
