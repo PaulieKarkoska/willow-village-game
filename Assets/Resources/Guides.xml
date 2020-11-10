@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Guides>
+    <Guide>
+      <Title>How To Play</Title>
+      <Content>1. Collect the seeds under the tree
+2. Plant them in any farm plot
+3. Fill up your water bucket by interacting with the well
+4. Harvest crops when you see the green harvest icon above them
+5. Collect the gold and seeds that appear
+6. Spend the gold on upgrades or allies
+7. When a wave starts, enemies will come to attack
+8. Protect your Tree of Life from bandits at all costs!</Content>
+    </Guide>
+    <Guide>
+      <Title>Hints and Tips</Title>
+      <Content>-At any point during the next wave countdown, you can interact with the Keep board to skip the countdown
+-Should you somehow run out of seeds, more will periodically drop from your Tree of Life for you to pick up
+-If you are not gaining gold fast enough, try upgrading your harvest reward at the shop</Content>
+    </Guide>
+    <Guide>
+      <Title>Inventory</Title>
+      <Content>-Your inventory is displayed at the bottom-right corner
+-All collected water, seeds, and gold is stored here
+-Performing certain actions require a number of these items to be in your inventory
+-Walk over seeds and gold to pick them up automatically
+      </Content>
+    </Guide>
+    <Guide>
+      <Title>Player</Title>
+      <Content>-Your health and stamina are displayed in the top right corner
+-When you are damaged by an enemy, your life will drain
+-When your life is depleted, you will die and have to respawn near your Keep
+-Every time you respawn, your respawn countdown will be increased by one second, up to a maximum of 20 seconds
+-When you perform actions like sprinting, jumping, and using a weapon, your stamina will be reduced
+      </Content>
+    </Guide>
+    <Guide>
+      <Title>Farming</Title>
+      <Content>-With a seed in your inventory, look at a farm plot and press the E key to plant a crop
+-When you see the water icon appear over the crop, give it some water to keep it alive
+-When a crop is fully grown, harvest it for a reward of gold and more seeds
+-Dead crops can be removed in the same manner, but yield no reward
+  Crop Timings:
+    30 seconds before they need water
+    45 seconds having water until they can be harvested</Content>
+    </Guide>
+    <Guide>
+      <Title>Gold</Title>
+      <Content>-Gold is rewarded from harvesting crops
+-It can be spent at the shop on upgrades or items
+-Placing gold in your Keep chest will queue up new allies to spawn during active rounds</Content>
+    </Guide>
+    <Guide>
+      <Title>Enemy Waves</Title>
+      <Content>-At set time intervals, a number of enemies will begin spawning at the enemy castle and walk toward your village to attack you, your allies, and your tree
+-Killing all enemies in a wave will trigger a new wave countdown
+-Complete all waves to win the game!</Content>
+    </Guide>
+    <Guide>
+      <Title>Your Allies</Title>
+      <Content>-While a round is active and your Keep chest is stocked with enough gold, allies will spawn every few seconds to help you out
+-The armor upgrade in the shop will make them more resilient to attacks
+-Purchasing either a sword or sheidl for yourself will also give newly spawned allies an item of the same type</Content>
+    </Guide>
+    <Guide>
+    <Title>Your Tree of Life</Title>
+      <Content>-The tree must survive every wave in order to win the game
+-If it dies, you lose the game and must restart from the beginning
+-You can heal your tree with extra seeds from your inventory
+  Tree Info:
+    Max tree health is 1000 hitpoints
+    One seed will heal the tree for 2 hitpoints</Content>
+    </Guide>
+    <Guide>
+      <Title>Upgrade Shop</Title>
+      <Content>-Buying upgrades will enhance your survivability and crop productivity
+-The harvest reward upgrade increases the gold and seed yield of crops
+-The water bucket upgrade allows you to carry more water to keep your crops irrigated
+-The ally armor upgrade will increase the max health of your allies
+-The restore health potion will simply refill your health</Content>
+    </Guide>
+    <Guide>
+      <Title>Sword and Shield</Title>
+      <Content>-Purchasing a sword or shield will place that item in your hand, and give you better offensive or defensive power
+-The newly purchased item will also spawn allies with an item of the same type</Content>
+    </Guide>
+  </Guides>
+</root>

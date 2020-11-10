@@ -30,7 +30,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
-     
+
         Cursor.SetCursor(cursorSprite, new Vector2(cursorSprite.width * 0.35f, cursorSprite.height * 0.2f), CursorMode.ForceSoftware);
         newGamePanel.SetActive(false);
         controlsPanel.SetActive(false);
@@ -78,4 +78,5 @@ public class MainMenuController : MonoBehaviour
         SettingsButton.interactable = !active;
         ExitButton.interactable = !active;
     }
+
 }

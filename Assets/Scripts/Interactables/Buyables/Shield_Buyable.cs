@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Shield_Buyable : MonoBehaviour, IInteractable
 {
+    public static bool shieldIsPurchased = false;
+
     [SerializeField]
     private int cost = 50;
     [SerializeField]
@@ -38,10 +40,13 @@ public class Shield_Buyable : MonoBehaviour, IInteractable
 
     public void interact(GameObject player)
     {
+        shieldIsPurchased = true;
         player.GetComponent<CollectableManager>().RemoveMoney(cost);
-        var leftHandler = player.GetComponent<vCollectMeleeControl>().leftHandler.defaultHandler;
-        var shield = Instantiate(equippableShieldPrefab, leftHandler, false);
-        player.GetComponent<vMeleeManager>().SetRightWeapon(shield);
+        var eqp = player.GetComponent<PlayerEquipment>();
+        eqp.shield.GetComponent<vMeleeWeapon>().enabled = true;
+        eqp.shield.SetActive(true);
+        eqp.meleeManager.SetRightWeapon(eqp.weapon);
+
         Destroy(gameObject);
     }
 

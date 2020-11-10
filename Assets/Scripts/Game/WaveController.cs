@@ -35,9 +35,13 @@ public class WaveController : MonoBehaviour
     private EnemySpawner eSpawn;
     private AllySpawner aSpawn;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         eSpawn = GameObject.Find("BanditSpawner").GetComponent<EnemySpawner>();
         aSpawn = GameObject.Find("SoldierSpawner").GetComponent<AllySpawner>();
 

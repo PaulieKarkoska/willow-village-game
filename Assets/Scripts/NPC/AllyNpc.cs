@@ -5,11 +5,11 @@ public class AllyNpc : MonoBehaviour
 {
     [Header("Weapons")]
     [SerializeField]
-    private GameObject[] weaponObjects;
+    private GameObject weapon;
     [SerializeField]
-    private Quaternion weaponRotation;
+    private GameObject shield;
     [SerializeField]
-    private Vector3 weaponPosition;
+    private vMeleeManager meleeManager;
 
     [Header("Skins")]
     [SerializeField]
@@ -17,23 +17,20 @@ public class AllyNpc : MonoBehaviour
     [SerializeField]
     private GameObject helmet;
 
-    [SerializeField]
-    private Transform rightHand;
-    [SerializeField]
-    private Transform leftHand;
-
     private void Start()
     {
-
-        if (false)
+        if (Shield_Buyable.shieldIsPurchased)
         {
-            var weaponIndex = AllySpawner.weaponLevel;
-            //var weaponIndex = Random.Range(0, weaponObjects.Length);
-            var weapon = Instantiate(weaponObjects[weaponIndex], rightHand, true);
-            weapon.transform.position = weaponPosition;
-            weapon.transform.rotation = weaponRotation;
+            weapon.GetComponent<vMeleeWeapon>().enabled = true;
+            weapon.SetActive(true);
+            meleeManager.SetLeftWeapon(weapon);
+        }
 
-            GetComponent<vMeleeManager>().SetRightWeapon(weapon);
+        if (Sword_Buyable.swordIsPurchased)
+        {
+            shield.GetComponent<vMeleeWeapon>().enabled = true;
+            shield.SetActive(true);
+            meleeManager.SetRightWeapon(shield);
         }
 
         SetSkin();

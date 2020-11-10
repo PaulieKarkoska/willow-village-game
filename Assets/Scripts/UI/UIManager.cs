@@ -1,5 +1,10 @@
 ﻿using Invector.vCharacterController;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,9 +50,24 @@ public class UIManager : MonoBehaviour
     [Header("Pause Menu")]
     [SerializeField]
     private GameObject pausePanel;
+    [SerializeField]
+    private GameObject controlsPanel;
+    [SerializeField]
+    private TextMeshProUGUI guideTitleText;
+    [SerializeField]
+    private TextMeshProUGUI guideCountText;
+    [SerializeField]
+    private TextMeshProUGUI guideContentText;
+    [SerializeField]
+    private Toggle showGuideToggle;
+    [SerializeField]
+    private List<Tuple<string, string>> guides;
+    private int currentGuideIndex = 0;
 
     private bool isPaused = false;
     private bool gameIsOver = false;
+    private bool showGuideAtStart = true;
+    private const string showGuideAtStartKey = "showGuideAtStart";
 
     private void Awake()
     {
@@ -67,17 +87,39 @@ public class UIManager : MonoBehaviour
         TreeOfLife.OnTreeKilled += TreeOfLife_OnTreeKilled;
         WaveController.OnLastWaveCompleted += WaveController_OnLastWaveCompleted;
 
-        ConfigureStartCursor();
+        showGuideAtStart = bool.TryParse(PlayerPrefs.GetString(showGuideAtStartKey), out bool showGuide) ? showGuide : true;
+        showGuideToggle.isOn = showGuideAtStart;
+
+        SetupGuide();
+
+        StartCoroutine(ConfigureStart());
     }
 
-    private void ConfigureStartCursor()
+    private void SetupGuide()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-        pausePanel.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        var xmlText = Resources.Load("Guides") as TextAsset;
+        var xdoc = XDocument.Parse(xmlText.text);
+        guides = xdoc.XPathSelectElements("/root/Guides/*").Select(x =>
+            new Tuple<string, string>(x.Element("Title").Value, x.Element("Content").Value)).ToList();
+        UpdateGuideTexts();
+    }
 
-        Time.timeScale = 1;
+    private IEnumerator ConfigureStart()
+    {
+        if (showGuideAtStart)
+        {
+            isPaused = true;
+            yield return new WaitForSeconds(0.15f);
+
+            Cursor.SetCursor(cursorSprite, cursorHotspot, CursorMode.ForceSoftware);
+            pausePanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
+            Time.timeScale = 0;
+        }
+        yield return new WaitForSeconds(1);
+        WaveController.instance.StartWaveCountdown(120);
     }
 
     private void WaveController_OnLastWaveCompleted()
@@ -165,6 +207,39 @@ public class UIManager : MonoBehaviour
     public void ExitToDesktop()
     {
         Application.Quit();
+    }
+
+    public void ToggleControlsPanel()
+    {
+        controlsPanel.SetActive(!controlsPanel.activeSelf);
+    }
+
+    public void NextGuide()
+    {
+        if (guides.Count <= currentGuideIndex + 1)
+            currentGuideIndex = 0;
+        else
+            currentGuideIndex++;
+        UpdateGuideTexts();
+    }
+    public void PreviousGuide()
+    {
+        if (currentGuideIndex - 1 < 0)
+            currentGuideIndex = guides.Count - 1;
+        else
+            currentGuideIndex--;
+        UpdateGuideTexts();
+    }
+    public void UpdateGuideTexts()
+    {
+        guideTitleText.text = guides[currentGuideIndex].Item1;
+        guideContentText.text = guides[currentGuideIndex].Item2;
+        guideCountText.text = $"{currentGuideIndex + 1}/{guides.Count}";
+    }
+
+    public void ShowGuideAtStartToggled(bool value)
+    {
+        PlayerPrefs.SetString(showGuideAtStartKey, value.ToString());
     }
     #endregion
 }

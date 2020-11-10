@@ -62,6 +62,9 @@ public class CollectableManager : MonoBehaviour
 
         if (!uiManager)
             Debug.Log("There is no UiManager for the player to use");
+#if DEBUG
+        if (Debug.isDebugBuild) this.AddMoney(9999);
+#endif
     }
 
     public int AddSeeds(int seedsToAdd)

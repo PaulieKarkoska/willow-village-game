@@ -10,7 +10,7 @@ public abstract class NpcSpawner : MonoBehaviour
     [SerializeField]
     protected float spawnDelay = 2;
     [SerializeField]
-    protected int maxConcurrent;
+    protected int maxConcurrent = 15;
     [SerializeField]
     protected WaveController wController;
 }

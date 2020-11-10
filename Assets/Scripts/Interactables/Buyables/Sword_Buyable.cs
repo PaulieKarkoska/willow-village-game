@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Sword_Buyable : MonoBehaviour, IInteractable
 {
+    public static bool swordIsPurchased = false;
     [SerializeField]
     private int cost = 50;
     [SerializeField]
@@ -38,10 +39,13 @@ public class Sword_Buyable : MonoBehaviour, IInteractable
 
     public void interact(GameObject player)
     {
+        swordIsPurchased = true;
         player.GetComponent<CollectableManager>().RemoveMoney(cost);
-        var rightHandler = player.GetComponent<vCollectMeleeControl>().rightHandler.defaultHandler;
-        var weapon = Instantiate(equippableSwordPrefab, rightHandler, false);
-        player.GetComponent<vMeleeManager>().SetRightWeapon(weapon);
+        var eqp = player.GetComponent<PlayerEquipment>();
+        eqp.weapon.GetComponent<vMeleeWeapon>().enabled = true;
+        eqp.weapon.SetActive(true);
+        eqp.meleeManager.SetRightWeapon(eqp.weapon);
+
         Destroy(gameObject);
     }
 
