@@ -59,3 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.psd
+
+# Build Folders
+DevBuild
+Build

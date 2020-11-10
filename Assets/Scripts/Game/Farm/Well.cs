@@ -19,7 +19,7 @@ public class Well : MonoBehaviour, IInteractable
     }
     public string getInteractionInvalidText(GameObject player = null)
     {
-        return "Water level is already full";
+        return "Water bucket filled";
     }
 
     public KeyCode interactionKey { get; } = KeyCode.E;

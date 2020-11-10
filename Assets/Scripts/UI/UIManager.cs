@@ -1,4 +1,5 @@
 ﻿using Invector.vCharacterController;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,6 +66,18 @@ public class UIManager : MonoBehaviour
 
         TreeOfLife.OnTreeKilled += TreeOfLife_OnTreeKilled;
         WaveController.OnLastWaveCompleted += WaveController_OnLastWaveCompleted;
+
+        ConfigureStartCursor();
+    }
+
+    private void ConfigureStartCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+        pausePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Time.timeScale = 1;
     }
 
     private void WaveController_OnLastWaveCompleted()
@@ -121,7 +134,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Pause Menu
-    private void TogglePauseMenu()
+    public void TogglePauseMenu()
     {
         if (isPaused)
         {
@@ -142,6 +155,16 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0;
         }
         isPaused = !isPaused;
+    }
+
+    public void ExitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ExitToDesktop()
+    {
+        Application.Quit();
     }
     #endregion
 }

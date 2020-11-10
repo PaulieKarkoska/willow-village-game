@@ -1,6 +1,4 @@
 ﻿using Invector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeHealer : MonoBehaviour, IInteractable
@@ -37,20 +35,25 @@ public class TreeHealer : MonoBehaviour, IInteractable
 
     public string getInteractionInvalidText(GameObject player)
     {
-        return "Cannot heal tree right now";
+        if (health.currentHealth >= health.maxHealth)
+            return "Tree health is full";
+        else if (!inventory.HasEnoughSeeds(1))
+            return "You need seeds to heal the tree";
+        else
+            return "Cannot heal tree right now";
     }
 
     public string getInteractionText(GameObject player)
     {
-        return "Spend seeds to restore tree health";
+        return $"Spend {health} seeds to restore tree health";
     }
 
     public void interact(GameObject player)
     {
-        var missing = Mathf.CeilToInt(health.maxHealth - health.currentHealth);
-        var healValue = missing < inventory.totalSeeds ? missing : inventory.totalSeeds;
-        health.AddHealth(healValue);
-        inventory.RemoveSeeds(healValue);
+        var needed = Mathf.CeilToInt((health.maxHealth - health.currentHealth) / 2);
+        needed = inventory.totalSeeds >= needed ? needed : inventory.totalSeeds;
+        health.ResetHealth();
+        inventory.RemoveSeeds(needed);
     }
 
     public void intermediateInteract(GameObject player)

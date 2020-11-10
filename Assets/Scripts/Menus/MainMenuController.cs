@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
     [Space(10)]
     public GameObject menuPanel;
     public GameObject newGamePanel;
-    public GameObject settingsPanel;
+    public GameObject controlsPanel;
     [Header("Loading")]
     public GameObject loadingPanel;
     public Slider loadingSlider;
@@ -29,9 +29,11 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
+     
         Cursor.SetCursor(cursorSprite, new Vector2(cursorSprite.width * 0.35f, cursorSprite.height * 0.2f), CursorMode.ForceSoftware);
         newGamePanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
     public void NewGame()
@@ -56,12 +58,12 @@ public class MainMenuController : MonoBehaviour
 
     public void Settings()
     {
-        TogglePanel(settingsPanel, true);
+        TogglePanel(controlsPanel, true);
 
     }
     public void SettingsClose()
     {
-        TogglePanel(settingsPanel, false);
+        TogglePanel(controlsPanel, false);
     }
 
     public void Exit()

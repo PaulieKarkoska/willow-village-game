@@ -38,7 +38,7 @@ public class KeepBoard : MonoBehaviour, IInteractable
         WaveController.OnWaveUpdated += WaveController_OnWaveUpdated;
         WaveController.OnWaveStarted += WaveController_OnWaveStarted;
 
-        waveText.text = $"0/{WaveController.maxWave}";
+        waveText.text = $"0/{WaveController.maxWave + 1}";
         routedText.text = "0/0";
         aliveText.text = "0";
         allyText.text = "0";
@@ -82,7 +82,7 @@ public class KeepBoard : MonoBehaviour, IInteractable
     }
     private void WaveController_OnWaveUpdated(int currentWave)
     {
-        waveText.text = $"{wController.currentWave}/{WaveController.maxWave}";
+        waveText.text = $"{wController.currentWave}/{WaveController.maxWave + 1}";
     }
     private void WaveController_OnWaveStarted(int currentWave)
     {
